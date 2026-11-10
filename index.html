@@ -129,7 +129,7 @@ a>code{text-decoration:underline;text-underline-offset:2px}
   <section class="hero">
     <div class="eyebrow">Digital-Check dem-gruppe.de · Stand 10.11.2026</div>
     <h1>Über Google findet kaum jemand zu DEM GROUP. Das lässt sich ändern</h1>
-    <p class="lead">DEM GROUP hat echte Objekte, eine erstklassige Adresse und eine Website in zwei Sprachen. Die Gründe sind vor allem technisch: Die Website erzeugt fast tausend leere Seiten, ist auf dem Handy sehr langsam, und für die wichtigsten Suchen fehlen passende Seiten. Dazu kommt ein Datenschutzproblem: Die Besucherstatistik startet ohne Einwilligung. Die meisten Punkte lassen sich in wenigen Tagen beheben.</p>
+    <p class="lead">DEM GROUP hat echte Objekte, eine erstklassige Adresse und eine Website in zwei Sprachen. Dafür gibt es klare Gründe: Die Website erzeugt fast tausend leere Seiten, ist auf dem Handy sehr langsam, und für die wichtigsten Suchen fehlen passende Seiten. Dazu kommt ein Datenschutzproblem: Die Besucherstatistik startet ohne Einwilligung. Die meisten Punkte lassen sich in wenigen Tagen beheben.</p>
     <div class="meta"><span>Serhii Panchenko · Web-Entwicklung &amp; SEO</span><span>Nur öffentliche Daten, keine internen Zugänge</span></div>
   </section>
 
@@ -160,10 +160,10 @@ a>code{text-decoration:underline;text-underline-offset:2px}
     <p class="intro">Darauf lässt sich aufbauen.</p>
     <div class="good">
       <div>Echte, aktuelle Objekte mit vielen Fotos und übersichtlichen Exposés</div>
-      <div>Alle Pflichtangaben im Impressum, inklusive Maklererlaubnis nach § 34c und Handelsregister</div>
+      <div>Impressum mit Handelsregister, USt-IdNr. und Maklererlaubnis nach § 34c</div>
       <div>Deutsche und englische Fassung, für Google sauber miteinander verknüpft</div>
       <div>Erstklassige Adresse Königsallee 94, Adresse und Öffnungszeiten sind gut sichtbar</div>
-      <div>Cookie-Banner und Seitenverzeichnis für Google sind vorhanden</div>
+      <div>Ein Seitenverzeichnis für Google (Sitemap) ist eingerichtet</div>
       <div>Fast keine kaputten Links: nur ein einziges falsches Linkziel (Punkt 10)</div>
     </div>
   </section>
@@ -230,10 +230,10 @@ a>code{text-decoration:underline;text-underline-offset:2px}
     <h2>B · Damit Google die Website richtig versteht</h2>
     <div class="issues">
       <article class="issue r"><div class="issue-head"><h3>7 · Die Makler-Seiten lassen sich endlos weiterblättern</h3><span class="effort">1–2 Std.</span></div>
-        <dl><dt>Problem</dt><dd>An jede Makler- und Agenturseite lässt sich eine beliebige Seitenzahl anhängen, zum Beispiel <a href="https://www.dem-gruppe.de/agent/evgeny-katsman/page/500/" target="_blank" rel="noopener">Seite 500</a>. Ab Seite 2 sind diese Seiten leer, der Server liefert sie aber trotzdem als normale Seiten aus. Jede davon enthält einen für Besucher unsichtbaren Link „Mehr laden“ auf die nächste Zahl, und Suchmaschinen folgen ihm endlos. Deshalb sind von den 1.280 Seiten, die ein Suchroboter findet, rund 970 solche Leerseiten. Während meiner Prüfung hat der Server außerdem 11-mal mit einem Fehler geantwortet (502, Server überlastet).</dd>
+        <dl><dt>Problem</dt><dd>An jede Makler- und Agenturseite lässt sich eine beliebige Seitenzahl anhängen, zum Beispiel <a href="https://www.dem-gruppe.de/agent/evgeny-katsman/page/500/" target="_blank" rel="noopener">Seite 500</a>. Ab Seite 2 sind diese Seiten leer, der Server liefert sie aber trotzdem als normale Seiten aus. Jede davon enthält einen für Besucher unsichtbaren Link „Mehr laden“ auf die nächste Zahl, und Suchmaschinen folgen ihm endlos. Deshalb sind von den 1.280 Seiten, die ein Suchroboter findet, rund 970 solche Leerseiten. Während meiner Prüfung hat der Server außerdem 11-mal mit einem Fehler geantwortet (Fehler 502).</dd>
         <dt>Lösung</dt><dd>Für nicht vorhandene Seitenzahlen „Seite nicht gefunden“ ausgeben. Den Link nur zeigen, wenn es wirklich weitere Objekte gibt.</dd>
         <dt>Bringt</dt><dd>Google kümmert sich um Objekte und Leistungsseiten statt um Leerseiten. Der Server wird entlastet und fällt seltener aus.</dd>
-        <dt>Technik</dt><dd class="tech"><code>/agent/*/page/N/</code>, <code>/agentur/*/page/N/</code> + EN liefern für jedes N 200 („Keine Auflistung gefunden“) mit <code>a.houzez-infinite-load[data-page=N+1]</code> im versteckten Tab <code>#tab-properties</code>, Canonical auf Seite 1. Template prüft <code>max_num_pages</code> nicht → 404 erzwingen, Load-more-Link nur bei <code>data-total &gt; 0</code>.</dd></dl>
+        <dt>Technik</dt><dd class="tech"><code>/agent/*/page/N/</code>, <code>/agentur/*/page/N/</code> + EN liefern für jedes N 200 („Keine Auflistung gefunden“) mit <code>a.houzez-infinite-load[data-page=N+1]</code> im versteckten Tab <code>#tab-properties</code>, Canonical auf Seite 1. Beim Crawl 11× 502 Bad Gateway. Template prüft <code>max_num_pages</code> nicht → 404 erzwingen, Load-more-Link nur bei <code>data-total &gt; 0</code>.</dd></dl>
         <div class="table-wrap log"><table><thead><tr><th>Aufgerufene Adresse (10.11.2026)</th><th>Antwort des Servers</th><th>Inhalt</th><th>Link führt weiter zu</th></tr></thead><tbody>
           <tr><td><code>/agent/evgeny-katsman/</code></td><td>normale Seite (200)</td><td>Makler-Seite mit Objekten</td><td>Seite 2</td></tr>
           <tr><td><code>…/page/2/</code></td><td>normale Seite (200)</td><td>„Keine Auflistung gefunden“</td><td>Seite 3</td></tr>
@@ -433,7 +433,7 @@ a>code{text-decoration:underline;text-underline-offset:2px}
   <section class="hero">
     <div class="eyebrow">Digital-Check dem-gruppe.de · по состоянию на 10.11.2026</div>
     <h1>Из Google к DEM GROUP почти никто не приходит. Это можно исправить</h1>
-    <p class="lead">У DEM GROUP реальные объекты, престижный адрес и сайт на двух языках. Причины в основном технические: сайт создаёт почти тысячу пустых страниц, на телефоне работает очень медленно, а под главные поисковые запросы нет подходящих страниц. К этому добавляется проблема с защитой данных: статистика запускается без согласия посетителя. Большинство проблем можно исправить за несколько дней.</p>
+    <p class="lead">У DEM GROUP реальные объекты, престижный адрес и сайт на двух языках. Причины понятны: сайт создаёт почти тысячу пустых страниц, на телефоне работает очень медленно, а под главные поисковые запросы нет подходящих страниц. К этому добавляется проблема с защитой данных: статистика запускается без согласия посетителя. Большинство проблем можно исправить за несколько дней.</p>
     <div class="meta"><span>Serhii Panchenko · веб-разработка и SEO</span><span>Только открытые данные, без внутренних доступов</span></div>
   </section>
 
@@ -464,10 +464,10 @@ a>code{text-decoration:underline;text-underline-offset:2px}
     <p class="intro">На это можно опираться.</p>
     <div class="good">
       <div>Реальные актуальные объекты, много фото, понятные экспозе</div>
-      <div>Все обязательные данные в импрессуме, включая лицензию маклера по § 34c и торговый реестр</div>
+      <div>В импрессуме есть торговый реестр, налоговый номер и лицензия маклера по § 34c</div>
       <div>Немецкая и английская версии, правильно связанные между собой для Google</div>
       <div>Престижный адрес Königsallee 94, адрес и часы работы хорошо видны на сайте</div>
-      <div>Есть cookie-баннер и карта сайта для Google</div>
+      <div>Карта сайта для Google настроена</div>
       <div>Почти нет битых ссылок: всего одна ссылка ведёт не туда (пункт 10)</div>
     </div>
   </section>
@@ -534,10 +534,10 @@ a>code{text-decoration:underline;text-underline-offset:2px}
     <h2>B · Чтобы Google правильно понимал сайт</h2>
     <div class="issues">
       <article class="issue r"><div class="issue-head"><h3>7 · Страницы маклеров листаются бесконечно</h3><span class="effort">1–2 ч</span></div>
-        <dl><dt>Проблема</dt><dd>К адресу любой страницы маклера или агентства можно дописать любой номер страницы, например <a href="https://www.dem-gruppe.de/agent/evgeny-katsman/page/500/" target="_blank" rel="noopener">страницу 500</a>. Начиная со второй, эти страницы пустые, но сервер всё равно отдаёт их как обычные. На каждой есть невидимая для посетителей ссылка «Mehr laden» («загрузить ещё») на следующий номер, и поисковики идут по ней без конца. Поэтому из 1 280 страниц, которые находит поисковый робот, около 970 — такие пустышки. Кроме того, во время моей проверки сервер 11 раз ответил ошибкой (502, сервер перегружен).</dd>
+        <dl><dt>Проблема</dt><dd>К адресу любой страницы маклера или агентства можно дописать любой номер страницы, например <a href="https://www.dem-gruppe.de/agent/evgeny-katsman/page/500/" target="_blank" rel="noopener">страницу 500</a>. Начиная со второй, эти страницы пустые, но сервер всё равно отдаёт их как обычные. На каждой есть невидимая для посетителей ссылка «Mehr laden» («загрузить ещё») на следующий номер, и поисковики идут по ней без конца. Поэтому из 1 280 страниц, которые находит поисковый робот, около 970 — такие пустышки. Кроме того, во время моей проверки сервер 11 раз ответил ошибкой (ошибка 502).</dd>
         <dt>Решение</dt><dd>На несуществующие номера отвечать «страница не найдена». Показывать ссылку, только если дальше действительно есть объекты.</dd>
         <dt>Польза</dt><dd>Google занимается объектами и страницами услуг, а не пустышками. Сервер разгружается и реже падает.</dd>
-        <dt>Для разработчика</dt><dd class="tech"><code>/agent/*/page/N/</code>, <code>/agentur/*/page/N/</code> + EN отдают 200 для любого N («Keine Auflistung gefunden») с <code>a.houzez-infinite-load[data-page=N+1]</code> в скрытой вкладке <code>#tab-properties</code>, canonical на первую. Шаблон не проверяет <code>max_num_pages</code> → принудительный 404, ссылку load-more выводить только при <code>data-total &gt; 0</code>.</dd></dl>
+        <dt>Для разработчика</dt><dd class="tech"><code>/agent/*/page/N/</code>, <code>/agentur/*/page/N/</code> + EN отдают 200 для любого N («Keine Auflistung gefunden») с <code>a.houzez-infinite-load[data-page=N+1]</code> в скрытой вкладке <code>#tab-properties</code>, canonical на первую. При обходе 11× 502 Bad Gateway. Шаблон не проверяет <code>max_num_pages</code> → принудительный 404, ссылку load-more выводить только при <code>data-total &gt; 0</code>.</dd></dl>
         <div class="table-wrap log"><table><thead><tr><th>Открытый адрес (10.11.2026)</th><th>Ответ сервера</th><th>Содержимое</th><th>Ссылка ведёт на</th></tr></thead><tbody>
           <tr><td><code>/agent/evgeny-katsman/</code></td><td>обычная страница (200)</td><td>Страница маклера с объектами</td><td>страницу 2</td></tr>
           <tr><td><code>…/page/2/</code></td><td>обычная страница (200)</td><td>«Keine Auflistung gefunden» («объектов нет»)</td><td>страницу 3</td></tr>
