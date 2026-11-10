@@ -4,13 +4,801 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="robots" content="noindex, nofollow">
-<title>DEM Gruppe — Digital-Check</title>
-<link rel="stylesheet" href="assets/styles.css">
+<meta name="description" content="Digital-Check dem-gruppe.de: 18 Punkte, die Anfragen, Sichtbarkeit und Rechtssicherheit kosten, jeweils mit Lösung, Nutzen und Aufwand. Stand 10.11.2026.">
+<title>DEM GROUP Digital-Check</title>
+<style>
+/* Layout: ein ruhiger Bericht in einer Spalte; Zahlenleiste, dann Befunde als Karten mit Ampel, dann Wettbewerb, dann Fahrplan */
+:root{
+  --bg:#f6f7f9; --paper:#ffffff; --ink:#0b1a33; --muted:#56627a; --line:#dde2ea;
+  --navy:#041436; --brass:#a87b2f; --brass-soft:#f3ead9;
+  --red:#b42318; --red-bg:#fdecea; --amber:#a15c07; --amber-bg:#fdf3e1; --green:#1f7a4d; --green-bg:#e6f4ec;
+  --f-display:Georgia,"Times New Roman",serif;
+  --f-body:system-ui,-apple-system,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif;
+  --f-mono:ui-monospace,"Cascadia Mono",Consolas,"Liberation Mono",monospace;
+  --s1:#2a78d6;--s2:#eb6834;--s3:#1baf7a;--s4:#eda100;--s5:#8a5cd1;--grid:#e6e9ef;
+  color-scheme:light;
+}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){
+  --bg:#0c1220; --paper:#121a2b; --ink:#e7ebf3; --muted:#9aa6bd; --line:#26314a;
+  --navy:#c9d6f2; --brass:#d6a957; --brass-soft:#2a2416;
+  --red:#ff8a80; --red-bg:#3a1714; --amber:#f2b45a; --amber-bg:#33240e; --green:#6fd3a0; --green-bg:#11301f;
+  --s1:#3987e5;--s2:#d95926;--s3:#199e70;--s4:#c98500;--s5:#9d74e0;--grid:#26314a; color-scheme:dark}}
+:root[data-theme="dark"]{
+  --bg:#0c1220; --paper:#121a2b; --ink:#e7ebf3; --muted:#9aa6bd; --line:#26314a;
+  --navy:#c9d6f2; --brass:#d6a957; --brass-soft:#2a2416;
+  --red:#ff8a80; --red-bg:#3a1714; --amber:#f2b45a; --amber-bg:#33240e; --green:#6fd3a0; --green-bg:#11301f;
+  --s1:#3987e5;--s2:#d95926;--s3:#199e70;--s4:#c98500;--s5:#9d74e0;--grid:#26314a; color-scheme:dark}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.6 var(--f-body)}
+.wrap{max-width:980px;margin:0 auto;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
+header.top{background:var(--paper);border-bottom:1px solid var(--line)}
+header.top .wrap{display:flex;flex-wrap:wrap;gap:12px;align-items:center;justify-content:space-between;padding-block:14px}
+.brand{font:600 13px/1 var(--f-body);letter-spacing:.12em;text-transform:uppercase;color:var(--muted)}
+.lang{display:flex;gap:4px;background:var(--bg);border:1px solid var(--line);border-radius:999px;padding:3px}
+.lang button{font:600 13px var(--f-body);border:0;background:transparent;color:var(--muted);padding:6px 14px;border-radius:999px;cursor:pointer}
+.lang button[aria-pressed="true"]{background:var(--navy);color:var(--paper)}
+.lang button:focus-visible,a:focus-visible,summary:focus-visible{outline:2px solid var(--brass);outline-offset:2px}
+.hero{padding-block:48px 28px}
+.eyebrow{font:500 12px/1.4 var(--f-mono);letter-spacing:.08em;text-transform:uppercase;color:var(--brass)}
+h1{font:700 clamp(30px,5vw,46px)/1.12 var(--f-display);margin:12px 0 16px;text-wrap:balance;color:var(--navy)}
+h2{font:700 clamp(22px,3.2vw,30px)/1.2 var(--f-display);margin:0 0 8px;text-wrap:balance;color:var(--navy)}
+h3{font:600 17px/1.35 var(--f-body);margin:0}
+p{margin:0}
+.lead{font-size:18px;color:var(--muted);max-width:66ch}
+.meta{display:flex;flex-wrap:wrap;gap:8px 20px;margin-top:20px;font:13px var(--f-mono);color:var(--muted)}
+section.block{padding-block:36px;border-top:1px solid var(--line)}
+.intro{color:var(--muted);max-width:66ch;margin-bottom:22px}
+.stats{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px}
+@media (max-width:720px){.stats{grid-template-columns:repeat(2,minmax(0,1fr))}}
+.stat{background:var(--paper);border:1px solid var(--line);border-radius:10px;padding:16px}
+.stat b{display:block;font:700 30px/1.1 var(--f-display);color:var(--navy);font-variant-numeric:tabular-nums}
+.stat span{display:block;font-size:13px;color:var(--muted);margin-top:6px;line-height:1.4}
+.verdict ul{margin:0;padding:0;display:grid;gap:10px}
+.verdict li{list-style:none;display:grid;grid-template-columns:auto 1fr;gap:12px;align-items:start;background:var(--paper);border:1px solid var(--line);border-radius:10px;padding:14px 16px}
+.verdict li p{color:var(--muted);margin-top:4px}
+.n{font:700 15px/1 var(--f-mono);color:var(--brass);padding-top:4px}
+.issues{display:grid;gap:12px}
+.issue{min-width:0;background:var(--paper);border:1px solid var(--line);border-left:4px solid var(--line);border-radius:10px;padding:18px}
+.issue.r{border-left-color:var(--red)} .issue.a{border-left-color:var(--amber)}
+.issue-head{display:flex;flex-wrap:wrap;gap:8px 12px;align-items:center;justify-content:space-between;margin-bottom:10px}
+.issue dl{display:grid;grid-template-columns:120px 1fr;gap:6px 14px;margin:0;font-size:15px}
+.issue dt{color:var(--muted);font-size:13px;padding-top:2px}
+.issue dd{margin:0;min-width:0}
+.issue dd.tech{font-size:13px;color:var(--muted)}
+.effort{font:500 12px var(--f-mono);color:var(--muted)}
+.tags{display:flex;flex-wrap:wrap;gap:8px;align-items:center}
+.chip{flex:none;font:600 11px/1 var(--f-mono);letter-spacing:.06em;text-transform:uppercase;padding:6px 8px;border-radius:6px}
+.chip.r{color:var(--red);background:var(--red-bg)} .chip.a{color:var(--amber);background:var(--amber-bg)} .chip.g{color:var(--green);background:var(--green-bg)}
+code{font:13px var(--f-mono);background:var(--bg);border:1px solid var(--line);border-radius:4px;padding:1px 5px;word-break:break-word}
+.good{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:10px}
+.good div{background:var(--green-bg);color:var(--ink);border-radius:10px;padding:12px 14px;font-size:15px}
+.timeline{display:grid;gap:14px}
+.phase{display:grid;grid-template-columns:150px 1fr;gap:16px;background:var(--paper);border:1px solid var(--line);border-radius:10px;padding:18px}
+.phase .when{font:700 18px/1.2 var(--f-display);color:var(--navy)}
+.phase .when small{display:block;font:500 12px var(--f-mono);color:var(--brass);margin-top:6px;letter-spacing:.04em}
+.phase ul{margin:0;padding-left:18px;display:grid;gap:4px}
+.cols{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:12px}
+.box{background:var(--paper);border:1px solid var(--line);border-radius:10px;padding:18px}
+.box ul{margin:8px 0 0;padding-left:18px;display:grid;gap:4px}
+.callout{background:var(--brass-soft);border-radius:10px;padding:16px 18px;margin-top:16px}
+.table-wrap{overflow-x:auto;background:var(--paper);border:1px solid var(--line);border-radius:10px}
+table{border-collapse:collapse;width:100%;font-size:14px;min-width:560px}
+th,td{text-align:left;padding:10px 14px;border-bottom:1px solid var(--line);vertical-align:top}
+th{font:600 12px var(--f-mono);letter-spacing:.04em;text-transform:uppercase;color:var(--muted)}
+td.num,th.num{font-variant-numeric:tabular-nums;white-space:nowrap;text-align:right}
+tr.me td{background:var(--brass-soft)}
+tr:last-child td{border-bottom:0}
+.note{font-size:14px;color:var(--muted);margin-top:10px}
+figure{margin:14px 0 0;background:var(--paper);border:1px solid var(--line);border-radius:10px;overflow:hidden}
+figure img{display:block;width:100%;height:auto}
+figcaption{padding:12px 16px;font-size:14px;color:var(--muted)}
+.log{margin-top:10px}.log table{min-width:480px;font-size:13px}
+footer{padding-block:32px 48px;color:var(--muted);font-size:13px;border-top:1px solid var(--line)}
+@media (max-width:640px){.issue dl{grid-template-columns:1fr}.issue dt{padding-top:6px}.phase{grid-template-columns:1fr;gap:8px}}
+@media (prefers-reduced-motion:no-preference){.lang button{transition:background .15s,color .15s}}
+.trend{position:relative;background:var(--paper);border:1px solid var(--line);border-radius:10px;padding:14px 12px 8px}
+.trend svg{display:block;width:100%;height:auto;overflow:visible;touch-action:pan-y}
+.trend .legend{display:flex;flex-wrap:wrap;gap:6px 16px;margin:0 0 8px 4px;font-size:13px;color:var(--muted)}
+.trend .legend i{display:inline-block;width:14px;height:3px;border-radius:2px;margin-right:6px;vertical-align:middle}
+.trend .tip{position:absolute;pointer-events:none;background:var(--paper);border:1px solid var(--line);border-radius:8px;padding:8px 10px;font-size:13px;line-height:1.5;box-shadow:0 4px 14px rgba(0,0,0,.12);display:none;min-width:170px;color:var(--ink)}
+.trend .tip b{font-variant-numeric:tabular-nums;float:right;margin-left:12px}
+.trend-table{margin-top:10px;font-size:14px}.trend-table summary{cursor:pointer;color:var(--muted)}.trend-table .table-wrap{margin-top:8px}
+.contact-card{display:flex;flex-wrap:wrap;gap:16px 40px;align-items:center;background:var(--paper);border:1px solid var(--line);border-left:4px solid var(--brass);border-radius:10px;padding:20px 22px}
+.contact-card b{display:block;font:700 22px/1.2 var(--f-display);color:var(--navy)}
+.contact-card span{color:var(--muted);font-size:14px}
+.contact-card ul{list-style:none;margin:0;padding:0;display:flex;flex-wrap:wrap;gap:8px 20px}
+.contact-card a{color:var(--navy);font-weight:600}
+main a{color:var(--navy);text-underline-offset:2px}
+a>code{text-decoration:underline;text-underline-offset:2px}
+</style>
 </head>
 <body>
-<main style="max-width:760px;margin:48px auto;padding:0 16px">
-<h1>DEM Gruppe — Digital-Check</h1>
-<p>Bericht in Vorbereitung.</p>
+
+<header class="top">
+  <div class="wrap">
+    <div class="brand">DEM GROUP · Digital-Check</div>
+    <div class="lang" role="group" aria-label="Sprache / Язык">
+      <button type="button" data-lang="de" aria-pressed="true">Deutsch</button>
+      <button type="button" data-lang="ru" aria-pressed="false">Русский</button>
+    </div>
+  </div>
+</header>
+
+<!-- ============================ DEUTSCH ============================ -->
+<main id="de" lang="de" class="wrap">
+  <section class="hero">
+    <div class="eyebrow">Digital-Check dem-gruppe.de · Stand 10.11.2026</div>
+    <h1>Starkes Angebot an der Kö, aber Google findet die Website kaum</h1>
+    <p class="lead">DEM GROUP hat echte Objekte, eine Top-Adresse und eine zweisprachige Website. Trotzdem kommen aus Google fast keine Besucher: Die Website beschäftigt Google mit fast tausend leeren Seiten, lädt auf dem Handy über 20 MB und startet die Besucherstatistik ohne Einwilligung. Die meisten Punkte lassen sich in wenigen Tagen beheben.</p>
+    <div class="meta"><span>Serhii Panchenko · Web-Entwicklung &amp; SEO</span><span>Nur öffentliche Daten, keine internen Zugänge</span></div>
+  </section>
+
+  <section class="block">
+    <h2>Auf einen Blick</h2>
+    <p class="intro">Vollständiger Crawl am 10.11.2026, eigene Messungen im Browser und Daten aus SE Ranking (Stand November 2026).</p>
+    <div class="stats">
+      <div class="stat"><b>~970</b><span>von 1.280 gefundenen Seiten sind endlose Wiederholungen derselben Makler-Seite</span></div>
+      <div class="stat"><b>~5</b><span>Besucher pro Monat aus Google (Schätzung). Vergleichbarer Makler Immoprofi Fischer: ~70</span></div>
+      <div class="stat"><b>0</b><span>Platzierungen unter den ersten 100 bei „Immobilienmakler Düsseldorf“ (1.900 Suchen pro Monat)</span></div>
+      <div class="stat"><b>9 / 100</b><span>Ladezeit-Note der Startseite auf dem Handy, 23 MB Datenmenge</span></div>
+      <div class="stat"><b>vor</b><span>der Einwilligung starten Google Analytics und Microsoft Clarity</span></div>
+      <div class="stat"><b>0</b><span>Verlinkungen als Quelle in ChatGPT, Gemini, Perplexity und Google-KI-Antworten</span></div>
+    </div>
+  </section>
+
+  <section class="block verdict">
+    <h2>Das Wichtigste in drei Sätzen</h2>
+    <ul style="margin-top:18px">
+      <li><span class="n">1</span><div><h3>Google verliert sich in leeren Seiten.</h3><p>Die Makler-Seiten lassen sich endlos weiterblättern (Seite 500, Seite 9999 …). Google verschwendet seine Zeit dort, der Server wird überlastet, und die wenigen wichtigen Seiten kommen zu kurz.</p></div></li>
+      <li><span class="n">2</span><div><h3>Die Website ist auf dem Handy sehr langsam.</h3><p>Die Startseite lädt 21,5 MB Fotos. Auf einer normalen Mobilverbindung erscheint das Hauptbild nach rund 20 Sekunden. Viele Interessenten sind dann schon weg.</p></div></li>
+      <li><span class="n">3</span><div><h3>Für die wichtigsten Suchen gibt es keine passende Seite.</h3><p>Eigentümer suchen „Immobilienmakler Düsseldorf“, „Immobilie verkaufen Düsseldorf“ oder „Immobilienbewertung Düsseldorf“. DEM GROUP hat dafür keine eigene Seite. Zwei Düsseldorfer Makler teilen sich hier Platz 1.</p></div></li>
+    </ul>
+  </section>
+
+  <section class="block">
+    <h2>Was bereits gut ist</h2>
+    <p class="intro">Darauf lässt sich aufbauen.</p>
+    <div class="good">
+      <div>Echte, aktuelle Objekte mit vielen Fotos und klaren Exposés</div>
+      <div>Vollständige Pflichtangaben im Impressum, inkl. Maklererlaubnis nach § 34c und Handelsregister</div>
+      <div>Zwei Sprachen mit korrekten Sprachverweisen für Google</div>
+      <div>Repräsentative Adresse Königsallee 94, gut sichtbar mit Öffnungszeiten</div>
+      <div>Cookie-Banner und Seitenverzeichnis für Google sind vorhanden</div>
+      <div>Kaum kaputte Links: nur eine fehlerhafte Adresse auf der ganzen Website</div>
+    </div>
+  </section>
+
+  <section class="block">
+    <h2>A · Datenschutz und Vertrauen</h2>
+    <p class="intro">Diese Punkte sind für Besucher zum Teil sichtbar und bergen Abmahnrisiken. Die rechtliche Bewertung gehört in die Hände Ihrer Datenschutz- oder Rechtsberatung, die technische Umsetzung übernehme ich.</p>
+    <div class="issues">
+      <article class="issue r"><div class="issue-head"><h3>1 · Statistik startet, bevor Besucher zustimmen</h3><span class="effort">2–3 Std.</span></div>
+        <dl><dt>Problem</dt><dd>Der Cookie-Banner fragt nach Zustimmung, doch schon vorher werden Google Analytics und Microsoft Clarity (zeichnet Klicks und Mausbewegungen auf) geladen und Daten an Google und Microsoft gesendet. In einem frischen Browser ohne jede Auswahl gemessen.</dd>
+        <dt>Lösung</dt><dd>Google-Tags und Clarity erst nach Zustimmung laden lassen, zusätzlich den Google-Einwilligungsmodus aktivieren. Danach erneut messen.</dd>
+        <dt>Bringt</dt><dd>Der Banner tut, was er verspricht. Weniger Abmahnrisiko, und die Zahlen in Analytics bleiben trotzdem nutzbar.</dd>
+        <dt>Technik</dt><dd class="tech">GTM <code>GTM-5VMCM5P8</code> und gtag <code>GT-WRGJZM8N</code> werden von Site Kit mit <code>type="text/javascript"</code> eingebunden, Complianz blockiert sie nicht; kein <code>gtag('consent','default')</code>. Vor Klick: <code>g/collect</code>, Cookies <code>_ga</code>/<code>_ga_T1F3QMW9L9</code>, <code>clarity.js</code> + 4× <code>clarity.ms/collect</code>, Trustindex-Loader.</dd></dl>
+        <figure><img src="assets/evidence/consent-banner-2026-11-10.jpg" alt="Startseite von dem-gruppe.de mit geöffnetem Cookie-Banner „Zustimmung verwalten“, es wurde noch nichts ausgewählt" width="1280" height="900" loading="lazy"><figcaption>Aufnahme vom 10.11.2026 in einem frischen Browser ohne gespeicherte Auswahl. Der Banner wartet noch auf eine Entscheidung. Zu diesem Zeitpunkt war bereits Folgendes passiert:</figcaption></figure>
+        <div class="table-wrap log"><table><thead><tr><th class="num">Sekunde</th><th>Dienst</th><th>Was passiert</th></tr></thead><tbody>
+          <tr><td class="num">2,4</td><td>Google Fonts</td><td>Schriften werden von Google-Servern geladen</td></tr>
+          <tr><td class="num">2,4</td><td>Google Tag</td><td>Analyse-Skript wird geladen</td></tr>
+          <tr><td class="num">2,4</td><td>Trustindex</td><td>Skript des Bewertungsdienstes wird geladen</td></tr>
+          <tr><td class="num">2,9</td><td>Google Tag Manager</td><td>Container GTM-5VMCM5P8 wird geladen</td></tr>
+          <tr><td class="num">4,4</td><td>Microsoft Clarity</td><td>Aufzeichnungs-Skript wird geladen</td></tr>
+          <tr><td class="num">4,5</td><td>Google Analytics</td><td>Besuch wird gemeldet, Cookies <code>_ga</code> werden gesetzt</td></tr>
+          <tr><td class="num">4,9–10,4</td><td>Microsoft Clarity</td><td>4× Aufzeichnungsdaten gesendet</td></tr>
+        </tbody></table></div>
+      </article>
+
+      <article class="issue r"><div class="issue-head"><h3>2 · Datenschutzerklärung nennt die eingesetzten Dienste nicht</h3><span class="effort">2–3 Std. + Prüfung</span></div>
+        <dl><dt>Problem</dt><dd>Die <a href="https://www.dem-gruppe.de/datenschutz/" target="_blank" rel="noopener">Datenschutzerklärung</a> beschreibt nur YouTube und Google Maps. Google Analytics, Google Tag Manager, Microsoft Clarity, der Bewertungsdienst Trustindex, Google Fonts und das Cookie-Tool fehlen. Außerdem steht dort eine andere E-Mail-Adresse (de@) als im Impressum (info@).</dd>
+        <dt>Lösung</dt><dd>Liste aller tatsächlich eingesetzten Dienste erstellen (liefere ich), Text ergänzen und von der Rechtsberatung freigeben lassen.</dd>
+        <dt>Bringt</dt><dd>Eine Erklärung, die zur Website passt. Das ist die Grundlage, falls ein Besucher oder eine Behörde nachfragt.</dd>
+        <dt>Technik</dt><dd class="tech">e-recht24-Vorlage; Abschnitte zu Hosting/Server-Logs, Analyse und Einwilligungsverwaltung fehlen.</dd></dl>
+      </article>
+
+      <article class="issue r"><div class="issue-head"><h3>3 · Private E-Mail-Adresse eines Mitarbeiters öffentlich</h3><span class="effort">15–30 Min.</span></div>
+        <dl><dt>Problem</dt><dd>Eine Autorenseite verwendet als Namen die private Gmail-Adresse eines Mitarbeiters. Sie steht in der Adresse der Seite, im Seitentitel und 14-mal im Text. Spam-Programme sammeln solche Adressen automatisch ein.</dd>
+        <dt>Lösung</dt><dd>Im WordPress-Benutzerprofil einen Anzeigenamen setzen und die Autorenseiten abschalten oder auf die Teamseite umleiten.</dd>
+        <dt>Bringt</dt><dd>Schutz der Mitarbeiterdaten und ein professioneller Eindruck.</dd>
+        <dt>Technik</dt><dd class="tech"><code>/author/r…-gmail-com/</code> (200, noindex). User-Nicename = E-Mail; Author-Archive deaktivieren bzw. 301 auf <code>/immobilienmakler/</code>.</dd></dl>
+      </article>
+
+      <article class="issue r"><div class="issue-head"><h3>4 · Google-Schriften werden direkt von Google geladen</h3><span class="effort">1 Std.</span></div>
+        <dl><dt>Problem</dt><dd>Beim Aufruf jeder Seite überträgt der Browser die IP-Adresse des Besuchers an Google, um Schriften zu laden. Für genau diesen Fall gab es in Deutschland bereits Urteile und Abmahnwellen.</dd>
+        <dt>Lösung</dt><dd>Schriften auf dem eigenen Server ablegen. Ein Teil liegt dort schon, nur das Theme lädt sie zusätzlich von Google.</dd>
+        <dt>Bringt</dt><dd>Weniger Rechtsrisiko und eine schnellere Seite.</dd>
+        <dt>Technik</dt><dd class="tech"><code>fonts.googleapis.com/css?family=Roboto…|Plus Jakarta Sans</code> (Houzez/Redux) und <code>css2?family=Roboto</code> (Child-Theme-Header); Elementor „Google Fonts lokal laden“ ist bereits aktiv.</dd></dl>
+      </article>
+
+      <article class="issue a"><div class="issue-head"><h3>5 · Impressum mit veralteten Angaben</h3><span class="effort">30 Min.</span></div>
+        <dl><dt>Problem</dt><dd>Das <a href="https://www.dem-gruppe.de/impressum/" target="_blank" rel="noopener">Impressum</a> beruft sich auf ein Gesetz, das 2024 ersetzt wurde, und verlinkt die EU-Streitschlichtungsplattform, die seit Juli 2025 abgeschaltet ist. Bei der Aufsichtsbehörde fehlt die Anschrift. Im Namen der Geschäftsführerin steckt einmal ein kyrillischer Buchstabe statt eines lateinischen „a“.</dd>
+        <dt>Lösung</dt><dd>Text aktualisieren (Vorschlag liefere ich), Rechtsberatung gibt frei.</dd>
+        <dt>Bringt</dt><dd>Ein aktuelles Impressum ohne Angriffsfläche.</dd>
+        <dt>Technik</dt><dd class="tech">„§ 5 TMG“ → § 5 DDG; ODR-Hinweis (VO 524/2013, aufgehoben) entfernen; „Demidov<b>а</b>“ enthält U+0430.</dd></dl>
+      </article>
+
+      <article class="issue a"><div class="issue-head"><h3>6 · Reste der Theme-Demo sichtbar</h3><span class="effort">1–2 Std.</span></div>
+        <dl><dt>Problem</dt><dd>Jede Seite enthält ein Anmeldefenster für Besucher, obwohl es keinen Kundenbereich gibt. Im Quelltext dieses Fensters steht der Demo-Satz „Benutzer-Registrierung ist deaktiviert für demo-Zwecke“, den Google mitliest. Der Cookie-Banner mischt Deutsch und Englisch. Im Verzeichnis für Google stehen 14 Seiten wie „Rechnungen“, „Mein Profil“ oder „Informationen zur Mitgliedschaft“, die für Besucher keinen Sinn ergeben.</dd>
+        <dt>Lösung</dt><dd>Anmeldefunktion ausblenden, Banner vollständig übersetzen, Systemseiten aus dem Verzeichnis nehmen und für Google sperren.</dd>
+        <dt>Bringt</dt><dd>Die Website wirkt wie ein fertiges Maklerangebot und nicht wie eine Vorlage.</dd>
+        <dt>Technik</dt><dd class="tech">Houzez-Login-Modal; <code>page-sitemap.xml</code>: dashboard, rechnungen, mein-profil, meine-immobilien, bestellung-abschliessen, informationen-zur-mitgliedschaft u. a., alle <code>index, follow</code>.</dd></dl>
+      </article>
+    </div>
+  </section>
+
+  <section class="block">
+    <h2>B · Damit Google die Website richtig versteht</h2>
+    <div class="issues">
+      <article class="issue r"><div class="issue-head"><h3>7 · Endlos blätterbare Makler-Seiten</h3><span class="effort">1–2 Std.</span></div>
+        <dl><dt>Problem</dt><dd>Die Seiten der Makler und der Agentur lassen sich beliebig weiterblättern. Jede Seitenzahl öffnet eine vollständige Makler-Seite, auch <a href="https://www.dem-gruppe.de/agent/evgeny-katsman/page/500/" target="_blank" rel="noopener">Seite 500</a>. Für Besucher unsichtbar enthält jede davon einen Link „Mehr laden“ auf die nächste Zahl, dem Suchmaschinen folgen. Von 1.280 Seiten, die ein Suchroboter findet, sind rund 970 solche Kopien. Beim Crawl ist der Server darunter zusammengebrochen (11 Fehler „502“).</dd>
+        <dt>Lösung</dt><dd>Nicht vorhandene Seitenzahlen mit „Seite nicht gefunden“ beantworten und das Weiterblättern auf die echte Seitenzahl begrenzen.</dd>
+        <dt>Bringt</dt><dd>Google konzentriert sich auf Objekte und Leistungsseiten. Weniger Serverlast, weniger Ausfälle.</dd>
+        <dt>Technik</dt><dd class="tech"><code>/agent/*/page/N/</code>, <code>/agentur/*/page/N/</code> + EN liefern für jedes N 200 („Keine Auflistung gefunden“) mit <code>a.houzez-infinite-load[data-page=N+1]</code> im versteckten Tab <code>#tab-properties</code>, Canonical auf Seite 1. Template prüft <code>max_num_pages</code> nicht → 404 erzwingen, Load-more-Link nur bei <code>data-total &gt; 0</code>.</dd></dl>
+        <div class="table-wrap log"><table><thead><tr><th>Aufgerufene Adresse (10.11.2026)</th><th class="num">Antwort</th><th>Inhalt</th><th>Link weiter auf</th></tr></thead><tbody>
+          <tr><td><code>/agent/evgeny-katsman/</code></td><td class="num">200</td><td>Makler-Seite mit Objekten</td><td>Seite 2</td></tr>
+          <tr><td><code>…/page/2/</code></td><td class="num">200</td><td>„Keine Auflistung gefunden“</td><td>Seite 3</td></tr>
+          <tr><td><code>…/page/100/</code></td><td class="num">200</td><td>„Keine Auflistung gefunden“</td><td>Seite 101</td></tr>
+          <tr><td><code>…/page/500/</code></td><td class="num">200</td><td>„Keine Auflistung gefunden“</td><td>Seite 501</td></tr>
+          <tr><td><code>…/page/9999/</code></td><td class="num">200</td><td>„Keine Auflistung gefunden“</td><td>Seite 10000</td></tr>
+        </tbody></table></div>
+      </article>
+
+      <article class="issue r"><div class="issue-head"><h3>8 · Die Steuerungsdatei für Suchmaschinen fehlt</h3><span class="effort">15 Min.</span></div>
+        <dl><dt>Problem</dt><dd>Jede Website sollte Suchmaschinen über eine kleine Datei sagen, was sie nicht crawlen sollen und wo das Seitenverzeichnis liegt. Bei DEM GROUP gibt es diese Datei nicht (<a href="https://www.dem-gruppe.de/robots.txt" target="_blank" rel="noopener">Fehlerseite</a>).</dd>
+        <dt>Lösung</dt><dd>Datei anlegen, Seitenverzeichnis eintragen, Such- und Systemseiten ausschließen.</dd>
+        <dt>Bringt</dt><dd>Google findet neue Objekte schneller und ignoriert interne Seiten.</dd>
+        <dt>Technik</dt><dd class="tech"><code>/robots.txt</code> → 404 von nginx (nicht von WordPress) → statische Datei oder <code>try_files</code> auf <code>index.php</code>.</dd></dl>
+      </article>
+
+      <article class="issue a"><div class="issue-head"><h3>9 · Dreifache Umleitung, auch für Schriften</h3><span class="effort">30–60 Min.</span></div>
+        <dl><dt>Problem</dt><dd>Wer <code>dem-gruppe.de</code> eingibt, wird dreimal hin- und hergeleitet, bevor die Seite lädt. Die Schriftdateien der Website sind über genau diese alte Adresse eingebunden, deshalb läuft jede einzelne Schrift durch drei Umleitungen, auf der Startseite 162-mal.</dd>
+        <dt>Lösung</dt><dd>Eine einzige direkte Umleitung auf <code>https://www.dem-gruppe.de</code> einrichten und die Schrift-Adressen korrigieren.</dd>
+        <dt>Bringt</dt><dd>Spürbar schnellerer Seitenaufbau, sauberes Signal an Google.</dd>
+        <dt>Technik</dt><dd class="tech"><code>http://dem-gruppe.de</code> → <code>https://dem-gruppe.de</code> → <code>http://www</code> → <code>https://www</code>. Elementor-Font-CSS (<code>uploads/elementor/google-fonts/css/*.css</code>) enthält <code>http://dem-gruppe.de/…woff2</code>; Elementor → Tools → URLs ersetzen + CSS neu erzeugen. Zusätzlich HSTS.</dd></dl>
+      </article>
+
+      <article class="issue a"><div class="issue-head"><h3>10 · Ein kaputter Link auf 280 Seiten</h3><span class="effort">30 Min.</span></div>
+        <dl><dt>Problem</dt><dd>Auf rund 280 Seiten (deutsch und englisch) führt ein Link auf eine Fehlerseite. Ein englisches Exposé leitet außerdem auf die deutsche Fassung um.</dd>
+        <dt>Lösung</dt><dd>Link auf die richtige Seite setzen, englische Fassung des Exposés anlegen.</dd>
+        <dt>Bringt</dt><dd>Keine Sackgassen für Besucher und Google.</dd>
+        <dt>Technik</dt><dd class="tech"><code>/?p=21092</code> und <code>/en/?p=21092</code> → 404 (gelöschter Beitrag, Kurzlink). <code>/en/property/restaurant-in-47137-duisburg/</code> → DE.</dd></dl>
+      </article>
+
+      <article class="issue a"><div class="issue-head"><h3>11 · Seitentitel und Überschriften unklar</h3><span class="effort">0,5–1 Tag</span></div>
+        <dl><dt>Problem</dt><dd>Fast alle deutschen Seiten tragen im Google-Titel den englischen Zusatz „Real estate in Germany“. 253 Seiten haben keinen Beschreibungstext für Google, 30 Seiten denselben Titel. Auf der englischen Startseite und der Blogseite fehlt die Hauptüberschrift, 116 Seiten haben mehrere.</dd>
+        <dt>Lösung</dt><dd>Titel-Schema je Sprache, Beschreibungen für Objekte und Leistungsseiten, eine klare Hauptüberschrift je Seite.</dd>
+        <dt>Bringt</dt><dd>Mehr Klicks aus den Suchergebnissen, weil der Eintrag zeigt, was die Seite bietet.</dd>
+        <dt>Technik</dt><dd class="tech">Suffix <code>- DEM GROUP - Real estate in Germany</code> aus WPML-String / SEO-Plugin; H1 fehlt auf <code>/en/</code>, <code>/blog/</code>, <code>/anfrageformular/</code>; 172 Titles &gt; 60 Zeichen.</dd></dl>
+      </article>
+    </div>
+  </section>
+
+  <section class="block">
+    <h2>C · Ladezeit</h2>
+    <p class="intro">Gemessen mit Lighthouse, demselben Prüfprogramm, das hinter Google PageSpeed Insights steht (Note 0–100, ab 90 gut). Einzelmessung vom 10.11.2026.</p>
+    <div class="table-wrap"><table><thead><tr><th>Seite</th><th class="num">Handy</th><th class="num">Computer</th><th class="num">Hauptbild sichtbar (Handy)</th><th class="num">Datenmenge</th></tr></thead><tbody>
+      <tr><td><a href="https://www.dem-gruppe.de/" target="_blank" rel="noopener">Startseite</a></td><td class="num"><b>9</b></td><td class="num">35</td><td class="num">21,1 s</td><td class="num">23 MB</td></tr>
+      <tr><td><a href="https://www.dem-gruppe.de/immobilien/berlin-exklusive-2-zimmer-wohnung-moebliert-bezugsfrei-amp-ohne-bestehendes-mietverhaeltnis/" target="_blank" rel="noopener">Exposé (Berlin, 2 Zimmer)</a></td><td class="num"><b>16</b></td><td class="num">30</td><td class="num">21,6 s</td><td class="num">4,2 MB</td></tr>
+      <tr><td><a href="https://www.dem-gruppe.de/agent/evgeny-katsman/" target="_blank" rel="noopener">Makler-Seite</a></td><td class="num"><b>10</b></td><td class="num">48</td><td class="num">6,5 s</td><td class="num">4,5 MB</td></tr>
+    </tbody></table></div>
+    <div class="issues" style="margin-top:16px">
+      <article class="issue r"><div class="issue-head"><h3>12 · 21 MB Fotos auf der Startseite</h3><span class="effort">0,5 Tag</span></div>
+        <dl><dt>Problem</dt><dd>Die Startseite lädt auf dem Handy 21,5 MB Bilder, so viel wie etwa 10 Musikalben in MP3. Einzelne Fotos wiegen über 1 MB, darunter unbearbeitete WhatsApp-Bilder in großer Auflösung.</dd>
+        <dt>Lösung</dt><dd>Bilder automatisch verkleinern und in ein modernes Format umwandeln, Fotos unterhalb des sichtbaren Bereichs erst beim Scrollen laden.</dd>
+        <dt>Bringt</dt><dd>Startseite auf dem Handy in wenigen Sekunden statt rund 20. Bessere Bewertung durch Google.</dd>
+        <dt>Technik</dt><dd class="tech">Slider/Grid lädt <code>-1536x1152.jpg</code> für ~400 px Kacheln; WebP/AVIF + <code>srcset</code>/<code>sizes</code>, <code>loading="lazy"</code>. SF: 1.143 Bilder &gt; 100 KB.</dd></dl>
+      </article>
+      <article class="issue r"><div class="issue-head"><h3>13 · Die Seite springt beim Laden</h3><span class="effort">2–4 Std.</span></div>
+        <dl><dt>Problem</dt><dd>Während die Seite lädt, verschieben sich Inhalte mehrfach. Besucher tippen dadurch daneben. Beim Exposé am Computer ist der Wert achtmal schlechter als die Grenze, die Google als „schlecht“ einstuft.</dd>
+        <dt>Lösung</dt><dd>Feste Größen für Bilder, Slider und Kopfbereich hinterlegen.</dd>
+        <dt>Bringt</dt><dd>Ruhiger Seitenaufbau, weniger Fehlklicks, bessere Google-Werte.</dd>
+        <dt>Technik</dt><dd class="tech">CLS: Start 0,40 (mobil) / 0,96 (Desktop), Exposé 0,82 / 2,45. 2.413 <code>&lt;img&gt;</code> ohne <code>width</code>/<code>height</code>.</dd></dl>
+      </article>
+      <article class="issue a"><div class="issue-head"><h3>14 · Langsamer Server, viel Programmcode</h3><span class="effort">0,5–1 Tag</span></div>
+        <dl><dt>Problem</dt><dd>Der Server braucht 1,2 bis 2,4 Sekunden, bevor er überhaupt antwortet. Danach laden 45 Skripte, darunter Slider, Seitenbaukasten und Zusatzmodule, die auf vielen Seiten nicht gebraucht werden.</dd>
+        <dt>Lösung</dt><dd>Seiten-Cache einrichten, ungenutzte Module abschalten, Skripte verzögert laden.</dd>
+        <dt>Bringt</dt><dd>Schnellere Antwort auf jeder Seite, weniger Serverlast.</dd>
+        <dt>Technik</dt><dd class="tech">TTFB 1,2–2,4 s (kein Full-Page-Cache erkennbar); Slider Revolution, Elementor, Redux, WPML; nginx-Version im Header sichtbar, Sicherheits-Header (HSTS, X-Content-Type-Options, Referrer-Policy) fehlen.</dd></dl>
+      </article>
+    </div>
+  </section>
+
+  <section class="block">
+    <h2>D · Inhalte, die Anfragen bringen</h2>
+    <div class="issues">
+      <article class="issue r"><div class="issue-head"><h3>15 · Keine Seite für „Makler Düsseldorf“, „verkaufen“ und „bewerten“</h3><span class="effort">2–3 Tage</span></div>
+        <dl><dt>Problem</dt><dd>Eigentümer suchen nach einem Makler, nach „Immobilie verkaufen Düsseldorf“ oder nach einer Bewertung. Für keine dieser Suchen gibt es bei DEM GROUP eine eigene Seite. Die Teamseite <a href="https://www.dem-gruppe.de/immobilienmakler/" target="_blank" rel="noopener">„Immobilienmakler“</a> hat kaum eigenen Text.</dd>
+        <dt>Lösung</dt><dd>Drei Leistungsseiten: Makler in Düsseldorf, Immobilie verkaufen, kostenlose Bewertung. Jede mit Ablauf, Referenzen, Ansprechpartner und Anfrageformular.</dd>
+        <dt>Bringt</dt><dd>Eine Chance auf die Suchen, die Verkaufsaufträge bringen. Zusammen über 2.800 Suchen pro Monat.</dd>
+        <dt>Technik</dt><dd class="tech">Suchvolumen DE (SE Ranking): immobilienmakler düsseldorf 1.900, makler düsseldorf 610, immobilienbewertung düsseldorf 170, immobilie verkaufen düsseldorf 110. Schema <code>RealEstateAgent</code> mit Adresse/Öffnungszeiten ergänzen.</dd></dl>
+      </article>
+      <article class="issue a"><div class="issue-head"><h3>16 · Blog mit fachfremden Themen</h3><span class="effort">0,5 Tag + laufend</span></div>
+        <dl><dt>Problem</dt><dd>Der Blog hat acht Artikel. Darunter sind der Weihnachtsmarkt in Herne, ein Krankenhaus-Ranking, Osterbräuche und Grenzkontrollen in Polen. Für Eigentümer und Anleger in Düsseldorf ist das ohne Nutzen, und Google erkennt dadurch schlechter, wofür DEM GROUP steht.</dd>
+        <dt>Lösung</dt><dd>Fachfremde Artikel entfernen oder umleiten. Stattdessen wenige, gründliche Ratgeber: Mehrfamilienhaus als Kapitalanlage in NRW, Ablauf eines Verkaufs, Kaufnebenkosten, Mietrendite in Düsseldorfer Stadtteilen.</dd>
+        <dt>Bringt</dt><dd>Inhalte, die Anleger suchen und die KI-Assistenten als Quelle zitieren.</dd>
+        <dt>Technik</dt><dd class="tech">Eigener Text pro Artikel ~150–370 Wörter (Gesamt 612–839 abzüglich ~465 Wörter Seitenrahmen). Kategorie „Immobilienmarkt“ enthält Charité- und Weihnachtsmarkt-Beiträge.</dd></dl>
+      </article>
+      <article class="issue a"><div class="issue-head"><h3>17 · Rund 100 Listen-Seiten ohne eigenen Text</h3><span class="effort">0,5 Tag</span></div>
+        <dl><dt>Problem</dt><dd>Seiten wie „Solingen“, „Krefeld“, „Balkon“, „Parkplätze“ oder „Online-Besichtigung“ zeigen nur eine Objektliste ohne einen Satz eigenen Text. Google bewertet solche Seiten als dünn.</dd>
+        <dt>Lösung</dt><dd>Die wichtigen Städte (Düsseldorf, Duisburg, Köln) mit einem kurzen Marktabsatz ausstatten, die übrigen für Google sperren.</dd>
+        <dt>Bringt</dt><dd>Weniger Ballast, mehr Gewicht für die Seiten, die Anfragen bringen.</dd>
+        <dt>Technik</dt><dd class="tech">Taxonomien <code>stadt</code> (24), <code>ausstattung</code> (27), <code>immobilien-bezeichnung</code> (21), <code>immobilienart</code> (19), <code>immobilien-status</code> (16), DE+EN, alle indexierbar und in der Sitemap.</dd></dl>
+      </article>
+      <article class="issue a"><div class="issue-head"><h3>18 · Kaum Empfehlungen von anderen Websites</h3><span class="effort">laufend</span></div>
+        <dl><dt>Problem</dt><dd>Nur 4 Websites verlinken DEM GROUP so, dass Google den Link als Empfehlung zählt. Bei Spormann sind es über 300, bei KOCO über 200.</dd>
+        <dt>Lösung</dt><dd>Einträge in Makler- und Branchenverzeichnissen, Google-Unternehmensprofil, Kooperationen (Notare, Finanzierer, Hausverwaltungen), Pressemitteilungen zu Verkäufen.</dd>
+        <dt>Bringt</dt><dd>Mehr Vertrauen bei Google, Grundlage für bessere Platzierungen.</dd>
+        <dt>Technik</dt><dd class="tech">SE Ranking Backlinks: 44 verweisende Domains, davon 4 dofollow, 49 von 59 Links mit Anchor „dem-gruppe.de“.</dd></dl>
+      </article>
+    </div>
+  </section>
+
+  <section class="block">
+    <h2>Wo die Konkurrenz in Düsseldorf steht</h2>
+    <p class="intro">Eigenständige Düsseldorfer Makler, keine Franchise-Büros. Geschätzte Besucher aus Google pro Monat und weitere Werte aus SE Ranking, November 2026.</p>
+    <div class="table-wrap"><table><thead><tr><th>Makler</th><th>Art</th><th class="num">Besucher / Monat</th><th class="num">Begriffe in Top 10</th><th class="num">Empfehlende Websites</th></tr></thead><tbody>
+      <tr class="me"><td><a href="https://www.dem-gruppe.de/" target="_blank" rel="noopener"><strong>DEM GROUP</strong></a></td><td>Kö · Kauf, Verkauf, Investment</td><td class="num">~5</td><td class="num">5</td><td class="num">4</td></tr>
+      <tr><td><a href="https://www.spormann-realestate.com/" target="_blank" rel="noopener">Spormann Real Estate</a></td><td>Kö · Marktführer im Netz</td><td class="num">1.223</td><td class="num">390</td><td class="num">323</td></tr>
+      <tr><td><a href="https://koco-immobilien.de/" target="_blank" rel="noopener">KOCO Immobilien</a></td><td>Düsseldorf · Verkauf, Bewertung</td><td class="num">428</td><td class="num">297</td><td class="num">205</td></tr>
+      <tr><td><a href="https://www.immoprofi-fischer.de/" target="_blank" rel="noopener">Immoprofi Fischer</a></td><td>Kö · ähnlich groß</td><td class="num">69</td><td class="num">34</td><td class="num">15</td></tr>
+      <tr><td><a href="https://tobiasbartschimmobilien.de/" target="_blank" rel="noopener">Tobias Bartsch Immobilien</a></td><td>Düsseldorf · neue Website seit 08/2026</td><td class="num">34</td><td class="num">22</td><td class="num">5</td></tr>
+    </tbody></table></div>
+    <p class="note">„Empfehlende Websites“ = andere Domains mit einem Link, den Google als Empfehlung zählt (dofollow). In den Suchergebnissen stehen außerdem Franchise-Netzwerke und Portale (Engel &amp; Völkers, Von Poll, Dahler, McMakler, Homeday, ImmoScout24). Ihre Zahlen gelten bundesweit und sind hier bewusst nicht verglichen.</p>
+    <div class="callout"><strong>Der faire Vergleich:</strong> Am ehesten vergleichbar ist <strong>Immoprofi Fischer</strong>, ebenfalls an der Königsallee und ähnlich aufgestellt. Fischer hat mit einer schlanken Website rund 14-mal so viele Besucher. Tobias Bartsch zeigt, wie schnell es gehen kann: Die neue Website hat seit August aus dem Stand 34 Besucher pro Monat erreicht. Spormann und KOCO sind die Messlatte für „Makler Düsseldorf“.</div>
+
+    <h3 style="margin:28px 0 10px">Verkäufer-Suchen</h3>
+    <p class="intro">Hier suchen Eigentümer, die verkaufen oder bewerten lassen wollen. Zahl = Platz in Google.</p>
+    <div class="table-wrap"><table><thead><tr><th>Suche</th><th class="num">Suchen / Monat</th><th class="num">DEM GROUP</th><th class="num">Spormann</th><th class="num">KOCO</th><th class="num">Fischer</th></tr></thead><tbody>
+      <tr><td>immobilienmakler düsseldorf</td><td class="num">1.900</td><td class="num">–</td><td class="num"><b>1</b></td><td class="num"><b>1</b></td><td class="num">–</td></tr>
+      <tr><td>makler düsseldorf</td><td class="num">610</td><td class="num">–</td><td class="num"><b>1</b></td><td class="num"><b>1</b></td><td class="num">–</td></tr>
+      <tr><td>immobilienbewertung düsseldorf</td><td class="num">170</td><td class="num">–</td><td class="num">–</td><td class="num"><b>1</b></td><td class="num">–</td></tr>
+      <tr><td>immobilie verkaufen düsseldorf</td><td class="num">110</td><td class="num">–</td><td class="num">3</td><td class="num">7</td><td class="num">–</td></tr>
+      <tr><td>wohnung verkaufen düsseldorf</td><td class="num">40</td><td class="num">–</td><td class="num">6</td><td class="num">–</td><td class="num">–</td></tr>
+    </tbody></table></div>
+    <p class="note">„–“ = nicht unter den ersten 100 Ergebnissen. Zwei Websites können sich Platz 1 teilen, wenn Google zu unterschiedlichen Zeitpunkten gemessen hat.</p>
+
+    <h3 style="margin:28px 0 10px">Investment-Suchen: ein freies Feld</h3>
+    <p class="intro">Suchen von Anlegern. Hier ist keiner der Düsseldorfer Makler vorne, die Plätze gehören Portalen. Mit Mehrfamilienhäusern und Anlageobjekten in NRW passt DEM GROUP genau hierher.</p>
+    <div class="table-wrap"><table><thead><tr><th>Suche</th><th class="num">Suchen / Monat</th><th class="num">DEM GROUP</th><th class="num">Spormann</th><th class="num">KOCO</th></tr></thead><tbody>
+      <tr><td>immobilien als kapitalanlage</td><td class="num">1.300</td><td class="num">–</td><td class="num">–</td><td class="num">–</td></tr>
+      <tr><td>mehrfamilienhaus kaufen düsseldorf</td><td class="num">480</td><td class="num">–</td><td class="num">–</td><td class="num">–</td></tr>
+      <tr><td>mehrfamilienhaus kaufen nrw</td><td class="num">260</td><td class="num">–</td><td class="num">–</td><td class="num">–</td></tr>
+      <tr><td>gewerbeimmobilien düsseldorf</td><td class="num">210</td><td class="num">–</td><td class="num">–</td><td class="num">–</td></tr>
+      <tr><td>anlageimmobilien kaufen</td><td class="num">140</td><td class="num">–</td><td class="num">–</td><td class="num">–</td></tr>
+    </tbody></table></div>
+    <div class="callout"><strong>Was das heißt:</strong> Bei den Verkäufer-Suchen braucht DEM GROUP zuerst eigene Seiten (Punkt 15), dann Geduld. Bei den Investment-Suchen sind die lokalen Makler genauso schwach wie DEM GROUP heute. Mit einer guten Seite „Mehrfamilienhaus kaufen in NRW“ und passenden Ratgebern kann DEM GROUP dieses Feld als Erster besetzen.</div>
+  </section>
+
+  <section class="block">
+    <h2>Besucher aus Google: zwei Jahre im Vergleich</h2>
+    <p class="intro">Geschätzte Besucher pro Monat, November 2024 bis November 2026 (SE Ranking). Mit der Maus über die Grafik fahren, um die Monatswerte zu sehen.</p>
+    <div class="trend" data-lang="de"></div>
+    <details class="trend-table"><summary>Werte als Tabelle</summary><div class="table-wrap" data-table="de"></div></details>
+    <div class="callout"><strong>Was das heißt:</strong> DEM GROUP liegt seit zwei Jahren nahe null. Die kleinen Ausschläge 2026 kommen fast nur von fachfremden Blogartikeln und Namen anderer Makler, nicht von Düsseldorfer Kaufinteressenten oder Eigentümern. Spormann hat seine Besucher in derselben Zeit verachtfacht.</div>
+  </section>
+
+  <section class="block">
+    <h2>Wer in KI-Antworten auftaucht</h2>
+    <p class="intro">Wie oft ChatGPT, Gemini, Perplexity und die KI-Antworten in Google eine Website als Quelle verlinken. SE Ranking, November 2026.</p>
+    <div class="table-wrap"><table><thead><tr><th>Makler</th><th class="num">Google-KI-Antworten</th><th class="num">ChatGPT</th><th class="num">Gemini / Perplexity</th></tr></thead><tbody>
+      <tr class="me"><td><strong>DEM GROUP</strong></td><td class="num">0</td><td class="num">0</td><td class="num">0</td></tr>
+      <tr><td>KOCO Immobilien</td><td class="num">18</td><td class="num">1</td><td class="num">0</td></tr>
+      <tr><td>Tobias Bartsch</td><td class="num">3</td><td class="num">0</td><td class="num">0</td></tr>
+      <tr><td>Immoprofi Fischer</td><td class="num">2</td><td class="num">0</td><td class="num">0</td></tr>
+      <tr><td>Spormann</td><td class="num">0</td><td class="num">0</td><td class="num">0</td></tr>
+    </tbody></table></div>
+    <div class="callout"><strong>Was das heißt:</strong> Wer eine KI nach einem Makler oder einem Anlageobjekt in Düsseldorf fragt, bekommt DEM GROUP heute nicht genannt. Das Feld ist aber noch offen: Selbst Spormann wird nicht verlinkt. KI-Assistenten zitieren vor allem gründliche Ratgeber mit klaren Fakten und Websites mit sauberen Firmendaten. Die Punkte 11, 15 und 16 legen dafür die Grundlage.</div>
+  </section>
+
+  <section class="block">
+    <h2>Fahrplan</h2>
+    <div class="timeline">
+      <div class="phase"><div class="when">Woche 1<small>Recht &amp; Sofortmaßnahmen</small></div>
+        <ul><li>Punkte 1–6: Einwilligung, Datenschutzerklärung, Schriften, Impressum, Demo-Reste</li><li>Punkte 7, 8 und 10: endlose Seiten stoppen, Steuerungsdatei, kaputter Link</li></ul></div>
+      <div class="phase"><div class="when">Woche 2<small>Tempo</small></div>
+        <ul><li>Punkte 9, 12–14: Umleitungen, Bilder, Seitensprünge, Cache</li><li>Punkt 11: Titel und Überschriften</li><li>Kontrollmessung, Bericht mit Vorher/Nachher</li></ul></div>
+      <div class="phase"><div class="when">Monat 2–3<small>Wachstum</small></div>
+        <ul><li>Punkt 15: Seiten „Makler Düsseldorf“, „Immobilie verkaufen“, „Bewertung“</li><li>Investment-Seite „Mehrfamilienhaus kaufen in NRW“ und erste Ratgeber (Punkt 16)</li><li>Punkte 17 und 18: Listen-Seiten aufräumen, Verzeichnisse und Google-Unternehmensprofil</li><li>Monatlicher Bericht: Besucher, Anfragen, Platzierungen</li></ul></div>
+    </div>
+  </section>
+
+  <section class="block">
+    <div class="cols">
+      <div class="box"><h3>Was ich für den Start brauche</h3>
+        <ul><li>Google Search Console (Lesezugriff)</li><li>WordPress-Zugang, idealerweise mit Testumgebung</li><li>Zugriff auf Google Tag Manager und Complianz</li><li>Kontakt zum Hoster</li></ul></div>
+      <div class="box"><h3>Was Sie bekommen</h3>
+        <ul><li>Entwicklung und SEO aus einer Hand</li><li>Messbare Anfragen statt Vermutungen</li><li>Klare Prioritäten, kein Relaunch um des Relaunchs willen</li><li>Monatlicher Bericht in verständlicher Sprache, auf Wunsch auch auf Russisch</li></ul></div>
+    </div>
+  </section>
+
+  <section class="block contact">
+    <h2>Sprechen wir darüber</h2>
+    <p class="intro">Gern gehe ich die Punkte in einem kurzen Gespräch mit Ihnen durch, unverbindlich.</p>
+    <div class="contact-card">
+      <div><b>Serhii Panchenko</b><span>Web-Entwicklung &amp; SEO</span></div>
+      <ul><li><a href="mailto:serhii@panchenko.work">serhii@panchenko.work</a></li><li><a href="https://panchenko.work/" rel="noopener">panchenko.work</a></li><li><a href="https://www.linkedin.com/in/panchenko-serhii/" rel="noopener">LinkedIn</a></li></ul>
+    </div>
+  </section>
+
+  <section class="block">
+    <h2>Grundlage und Grenzen</h2>
+    <p class="intro">Vollständiger Crawl der Website (Screaming Frog, 10.11.2026), Nachprüfung der Befunde auf der Live-Website, Einwilligungstest in einem frischen Browser ohne gespeicherte Auswahl, Ladezeit-Messung mit Lighthouse 13 sowie die SEO-Datenbank SE Ranking (Stand November 2026). Alle Zahlen zu Besuchern und Positionen sind Schätzungen externer Datenbanken und ersetzen keine Daten aus Google Search Console oder Analytics. Die Hinweise zu Datenschutz und Impressum sind technische Beobachtungen, keine Rechtsberatung.</p>
+  </section>
+
+  <footer>Serhii Panchenko · Digital-Check dem-gruppe.de · 10.11.2026</footer>
 </main>
+
+<!-- ============================ РУССКИЙ ============================ -->
+<main id="ru" lang="ru" class="wrap" hidden>
+  <section class="hero">
+    <div class="eyebrow">Digital-Check dem-gruppe.de · по состоянию на 10.11.2026</div>
+    <h1>Сильное предложение на Кё, но Google сайт почти не находит</h1>
+    <p class="lead">У DEM GROUP реальные объекты, престижный адрес и двуязычный сайт. Но из Google посетителей почти нет: сайт занимает Google почти тысячей пустых страниц, на телефоне грузит больше 20 МБ и запускает статистику без согласия посетителя. Большинство пунктов исправляется за несколько дней.</p>
+    <div class="meta"><span>Serhii Panchenko · веб-разработка и SEO</span><span>Только открытые данные, без внутренних доступов</span></div>
+  </section>
+
+  <section class="block">
+    <h2>Коротко в цифрах</h2>
+    <p class="intro">Полный обход сайта 10.11.2026, собственные замеры в браузере и данные SE Ranking (ноябрь 2026).</p>
+    <div class="stats">
+      <div class="stat"><b>~970</b><span>из 1 280 найденных страниц — бесконечные повторы одной и той же страницы маклера</span></div>
+      <div class="stat"><b>~5</b><span>посетителей в месяц из Google (оценка). Сопоставимый маклер Immoprofi Fischer: ~70</span></div>
+      <div class="stat"><b>0</b><span>позиций в первой сотне по «Immobilienmakler Düsseldorf» (1 900 запросов в месяц)</span></div>
+      <div class="stat"><b>9 / 100</b><span>оценка скорости главной страницы на телефоне, 23 МБ данных</span></div>
+      <div class="stat"><b>до</b><span>согласия запускаются Google Analytics и Microsoft Clarity</span></div>
+      <div class="stat"><b>0</b><span>ссылок на сайт как на источник в ChatGPT, Gemini, Perplexity и ИИ-ответах Google</span></div>
+    </div>
+  </section>
+
+  <section class="block verdict">
+    <h2>Главное в трёх предложениях</h2>
+    <ul style="margin-top:18px">
+      <li><span class="n">1</span><div><h3>Google теряется в пустых страницах.</h3><p>Страницы маклеров можно листать бесконечно (страница 500, страница 9999 …). Google тратит на них время, сервер перегружается, а важным страницам внимания не хватает.</p></div></li>
+      <li><span class="n">2</span><div><h3>На телефоне сайт очень медленный.</h3><p>Главная грузит 21,5 МБ фотографий. При обычной мобильной связи главное изображение появляется примерно через 20 секунд. Многие уходят раньше.</p></div></li>
+      <li><span class="n">3</span><div><h3>Для главных запросов нет подходящей страницы.</h3><p>Собственники ищут «Immobilienmakler Düsseldorf», «Immobilie verkaufen Düsseldorf», «Immobilienbewertung Düsseldorf». Отдельной страницы под это у DEM GROUP нет. Первое место делят два дюссельдорфских маклера.</p></div></li>
+    </ul>
+  </section>
+
+  <section class="block">
+    <h2>Что уже хорошо</h2>
+    <p class="intro">На это можно опираться.</p>
+    <div class="good">
+      <div>Реальные актуальные объекты с большим количеством фото и понятными экспозе</div>
+      <div>Полные обязательные данные в импрессуме, включая лицензию § 34c и торговый реестр</div>
+      <div>Два языка с правильными языковыми ссылками для Google</div>
+      <div>Представительский адрес Königsallee 94, хорошо виден вместе с часами работы</div>
+      <div>Есть cookie-баннер и карта сайта для Google</div>
+      <div>Почти нет битых ссылок: только один ошибочный адрес на весь сайт</div>
+    </div>
+  </section>
+
+  <section class="block">
+    <h2>A · Защита данных и доверие</h2>
+    <p class="intro">Часть пунктов видна посетителям, часть несёт риск предупреждений (Abmahnung). Юридическую оценку даёт ваш консультант по защите данных или юрист, техническую реализацию беру на себя.</p>
+    <div class="issues">
+      <article class="issue r"><div class="issue-head"><h3>1 · Статистика запускается до согласия посетителя</h3><span class="effort">2–3 ч</span></div>
+        <dl><dt>Проблема</dt><dd>Cookie-баннер спрашивает согласие, но ещё до ответа загружаются Google Analytics и Microsoft Clarity (записывает клики и движения мыши), данные уходят в Google и Microsoft. Проверено в чистом браузере без какого-либо выбора.</dd>
+        <dt>Решение</dt><dd>Загружать теги Google и Clarity только после согласия, дополнительно включить режим согласия Google (Consent Mode). Затем перемерить.</dd>
+        <dt>Польза</dt><dd>Баннер делает то, что обещает. Меньше риска претензий, а цифры в Analytics остаются пригодными.</dd>
+        <dt>Для разработчика</dt><dd class="tech">GTM <code>GTM-5VMCM5P8</code> и gtag <code>GT-WRGJZM8N</code> вставляет Site Kit с <code>type="text/javascript"</code>, Complianz их не блокирует; нет <code>gtag('consent','default')</code>. До клика: <code>g/collect</code>, cookies <code>_ga</code>/<code>_ga_T1F3QMW9L9</code>, <code>clarity.js</code> + 4× <code>clarity.ms/collect</code>, загрузчик Trustindex.</dd></dl>
+        <figure><img src="assets/evidence/consent-banner-2026-11-10.jpg" alt="Главная страница dem-gruppe.de с открытым cookie-баннером «Zustimmung verwalten», выбор ещё не сделан" width="1280" height="900" loading="lazy"><figcaption>Снимок от 10.11.2026 в чистом браузере без сохранённого выбора. Баннер ещё ждёт решения. К этому моменту уже произошло следующее:</figcaption></figure>
+        <div class="table-wrap log"><table><thead><tr><th class="num">Секунда</th><th>Сервис</th><th>Что происходит</th></tr></thead><tbody>
+          <tr><td class="num">2,4</td><td>Google Fonts</td><td>шрифты грузятся с серверов Google</td></tr>
+          <tr><td class="num">2,4</td><td>Google Tag</td><td>загружается скрипт аналитики</td></tr>
+          <tr><td class="num">2,4</td><td>Trustindex</td><td>загружается скрипт сервиса отзывов</td></tr>
+          <tr><td class="num">2,9</td><td>Google Tag Manager</td><td>загружается контейнер GTM-5VMCM5P8</td></tr>
+          <tr><td class="num">4,4</td><td>Microsoft Clarity</td><td>загружается скрипт записи сессий</td></tr>
+          <tr><td class="num">4,5</td><td>Google Analytics</td><td>визит отправлен, ставятся cookies <code>_ga</code></td></tr>
+          <tr><td class="num">4,9–10,4</td><td>Microsoft Clarity</td><td>4 отправки данных записи</td></tr>
+        </tbody></table></div>
+      </article>
+
+      <article class="issue r"><div class="issue-head"><h3>2 · Политика конфиденциальности не называет используемые сервисы</h3><span class="effort">2–3 ч + проверка</span></div>
+        <dl><dt>Проблема</dt><dd>В <a href="https://www.dem-gruppe.de/datenschutz/" target="_blank" rel="noopener">Datenschutzerklärung</a> описаны только YouTube и Google Maps. Нет Google Analytics, Google Tag Manager, Microsoft Clarity, сервиса отзывов Trustindex, Google Fonts и самого cookie-инструмента. К тому же там указан другой e-mail (de@), чем в импрессуме (info@).</dd>
+        <dt>Решение</dt><dd>Составить список всех реально используемых сервисов (подготовлю), дополнить текст и согласовать с юристом.</dd>
+        <dt>Польза</dt><dd>Политика соответствует сайту. Это основа на случай вопроса от посетителя или ведомства.</dd>
+        <dt>Для разработчика</dt><dd class="tech">Шаблон e-recht24; нет разделов о хостинге/логах сервера, аналитике и управлении согласиями.</dd></dl>
+      </article>
+
+      <article class="issue r"><div class="issue-head"><h3>3 · Личный e-mail сотрудника в открытом доступе</h3><span class="effort">15–30 мин</span></div>
+        <dl><dt>Проблема</dt><dd>Страница автора использует в качестве имени личный Gmail-адрес сотрудника. Он стоит в адресе страницы, в заголовке и 14 раз в тексте. Спам-программы собирают такие адреса автоматически.</dd>
+        <dt>Решение</dt><dd>Задать в профиле WordPress отображаемое имя, страницы авторов отключить или перенаправить на страницу команды.</dd>
+        <dt>Польза</dt><dd>Защита данных сотрудника и профессиональное впечатление.</dd>
+        <dt>Для разработчика</dt><dd class="tech"><code>/author/r…-gmail-com/</code> (200, noindex). User nicename = e-mail; отключить author-архивы или 301 на <code>/immobilienmakler/</code>.</dd></dl>
+      </article>
+
+      <article class="issue r"><div class="issue-head"><h3>4 · Шрифты Google грузятся напрямую с серверов Google</h3><span class="effort">1 ч</span></div>
+        <dl><dt>Проблема</dt><dd>При открытии любой страницы браузер передаёт IP-адрес посетителя в Google, чтобы загрузить шрифты. Именно по этому поводу в Германии уже были судебные решения и волны предупреждений.</dd>
+        <dt>Решение</dt><dd>Хранить шрифты на своём сервере. Часть уже лежит там, просто тема дополнительно тянет их из Google.</dd>
+        <dt>Польза</dt><dd>Меньше юридического риска и быстрее страница.</dd>
+        <dt>Для разработчика</dt><dd class="tech"><code>fonts.googleapis.com/css?family=Roboto…|Plus Jakarta Sans</code> (Houzez/Redux) и <code>css2?family=Roboto</code> (header дочерней темы); локальная загрузка шрифтов в Elementor уже включена.</dd></dl>
+      </article>
+
+      <article class="issue a"><div class="issue-head"><h3>5 · Устаревшие данные в импрессуме</h3><span class="effort">30 мин</span></div>
+        <dl><dt>Проблема</dt><dd><a href="https://www.dem-gruppe.de/impressum/" target="_blank" rel="noopener">Импрессум</a> ссылается на закон, заменённый в 2024 году, и на платформу ЕС для урегулирования споров, закрытую в июле 2025. У надзорного органа не указан адрес. В имени управляющей одна буква «а» набрана кириллицей вместо латиницы.</dd>
+        <dt>Решение</dt><dd>Обновить текст (предложу формулировки), юрист утверждает.</dd>
+        <dt>Польза</dt><dd>Актуальный импрессум без поводов для претензий.</dd>
+        <dt>Для разработчика</dt><dd class="tech">«§ 5 TMG» → § 5 DDG; убрать ссылку ODR (регламент 524/2013 отменён); в «Demidov<b>а</b>» символ U+0430.</dd></dl>
+      </article>
+
+      <article class="issue a"><div class="issue-head"><h3>6 · Видны остатки демо-версии темы</h3><span class="effort">1–2 ч</span></div>
+        <dl><dt>Проблема</dt><dd>На каждой странице есть окно входа для посетителей, хотя личного кабинета нет. В коде этого окна стоит демо-фраза «Benutzer-Registrierung ist deaktiviert für demo-Zwecke», которую читает Google. Cookie-баннер смешивает немецкий и английский. В карте сайта для Google 14 страниц вроде «Счета», «Мой профиль», «Информация о членстве», которые посетителям не нужны.</dd>
+        <dt>Решение</dt><dd>Скрыть функцию входа, полностью перевести баннер, убрать системные страницы из карты сайта и закрыть от Google.</dd>
+        <dt>Польза</dt><dd>Сайт выглядит как готовое предложение маклера, а не как шаблон.</dd>
+        <dt>Для разработчика</dt><dd class="tech">Login-модалка Houzez; <code>page-sitemap.xml</code>: dashboard, rechnungen, mein-profil, meine-immobilien, bestellung-abschliessen, informationen-zur-mitgliedschaft и др., все <code>index, follow</code>.</dd></dl>
+      </article>
+    </div>
+  </section>
+
+  <section class="block">
+    <h2>B · Чтобы Google правильно понимал сайт</h2>
+    <div class="issues">
+      <article class="issue r"><div class="issue-head"><h3>7 · Бесконечно листаемые страницы маклеров</h3><span class="effort">1–2 ч</span></div>
+        <dl><dt>Проблема</dt><dd>Страницы маклеров и агентства можно листать сколько угодно. Любой номер открывает полноценную страницу маклера, в том числе <a href="https://www.dem-gruppe.de/agent/evgeny-katsman/page/500/" target="_blank" rel="noopener">страница 500</a>. Невидимо для посетителей на каждой из них есть ссылка «Mehr laden» на следующий номер, по которой идут поисковики. Из 1 280 страниц, которые находит поисковый робот, около 970 — такие копии. Во время обхода сервер под этой нагрузкой начал сбоить (11 ошибок «502»).</dd>
+        <dt>Решение</dt><dd>На несуществующие номера страниц отвечать «страница не найдена» и ограничить листание реальным числом страниц.</dd>
+        <dt>Польза</dt><dd>Google сосредоточится на объектах и страницах услуг. Меньше нагрузки на сервер и сбоев.</dd>
+        <dt>Для разработчика</dt><dd class="tech"><code>/agent/*/page/N/</code>, <code>/agentur/*/page/N/</code> + EN отдают 200 для любого N («Keine Auflistung gefunden») с <code>a.houzez-infinite-load[data-page=N+1]</code> в скрытой вкладке <code>#tab-properties</code>, canonical на первую. Шаблон не проверяет <code>max_num_pages</code> → принудительный 404, ссылку load-more выводить только при <code>data-total &gt; 0</code>.</dd></dl>
+        <div class="table-wrap log"><table><thead><tr><th>Открытый адрес (10.11.2026)</th><th class="num">Ответ</th><th>Содержимое</th><th>Ссылка дальше на</th></tr></thead><tbody>
+          <tr><td><code>/agent/evgeny-katsman/</code></td><td class="num">200</td><td>страница маклера с объектами</td><td>страницу 2</td></tr>
+          <tr><td><code>…/page/2/</code></td><td class="num">200</td><td>«Keine Auflistung gefunden»</td><td>страницу 3</td></tr>
+          <tr><td><code>…/page/100/</code></td><td class="num">200</td><td>«Keine Auflistung gefunden»</td><td>страницу 101</td></tr>
+          <tr><td><code>…/page/500/</code></td><td class="num">200</td><td>«Keine Auflistung gefunden»</td><td>страницу 501</td></tr>
+          <tr><td><code>…/page/9999/</code></td><td class="num">200</td><td>«Keine Auflistung gefunden»</td><td>страницу 10000</td></tr>
+        </tbody></table></div>
+      </article>
+
+      <article class="issue r"><div class="issue-head"><h3>8 · Нет управляющего файла для поисковиков</h3><span class="effort">15 мин</span></div>
+        <dl><dt>Проблема</dt><dd>Каждый сайт должен через небольшой файл сообщать поисковикам, что не обходить и где лежит карта сайта. У DEM GROUP такого файла нет (<a href="https://www.dem-gruppe.de/robots.txt" target="_blank" rel="noopener">страница ошибки</a>).</dd>
+        <dt>Решение</dt><dd>Создать файл, указать карту сайта, исключить поиск и системные страницы.</dd>
+        <dt>Польза</dt><dd>Google быстрее находит новые объекты и игнорирует служебные страницы.</dd>
+        <dt>Для разработчика</dt><dd class="tech"><code>/robots.txt</code> → 404 от nginx (не от WordPress) → статический файл или <code>try_files</code> на <code>index.php</code>.</dd></dl>
+      </article>
+
+      <article class="issue a"><div class="issue-head"><h3>9 · Тройное перенаправление, в том числе для шрифтов</h3><span class="effort">30–60 мин</span></div>
+        <dl><dt>Проблема</dt><dd>Кто вводит <code>dem-gruppe.de</code>, проходит три перенаправления, прежде чем страница загрузится. Файлы шрифтов подключены именно через этот старый адрес, поэтому каждый шрифт идёт через три перенаправления — на главной 162 раза.</dd>
+        <dt>Решение</dt><dd>Одно прямое перенаправление на <code>https://www.dem-gruppe.de</code> и исправить адреса шрифтов.</dd>
+        <dt>Польза</dt><dd>Заметно быстрее загрузка, чистый сигнал для Google.</dd>
+        <dt>Для разработчика</dt><dd class="tech"><code>http://dem-gruppe.de</code> → <code>https://dem-gruppe.de</code> → <code>http://www</code> → <code>https://www</code>. CSS шрифтов Elementor (<code>uploads/elementor/google-fonts/css/*.css</code>) содержит <code>http://dem-gruppe.de/…woff2</code>; Elementor → Tools → Replace URL + регенерация CSS. Плюс HSTS.</dd></dl>
+      </article>
+
+      <article class="issue a"><div class="issue-head"><h3>10 · Одна битая ссылка на 280 страницах</h3><span class="effort">30 мин</span></div>
+        <dl><dt>Проблема</dt><dd>Примерно на 280 страницах (немецких и английских) ссылка ведёт на страницу ошибки. Кроме того, одно английское экспозе перенаправляет на немецкую версию.</dd>
+        <dt>Решение</dt><dd>Поставить правильную ссылку, создать английскую версию экспозе.</dd>
+        <dt>Польза</dt><dd>Нет тупиков ни для посетителей, ни для Google.</dd>
+        <dt>Для разработчика</dt><dd class="tech"><code>/?p=21092</code> и <code>/en/?p=21092</code> → 404 (удалённая запись, короткая ссылка). <code>/en/property/restaurant-in-47137-duisburg/</code> → DE.</dd></dl>
+      </article>
+
+      <article class="issue a"><div class="issue-head"><h3>11 · Нечёткие заголовки страниц</h3><span class="effort">0,5–1 день</span></div>
+        <dl><dt>Проблема</dt><dd>Почти все немецкие страницы несут в заголовке для Google английский хвост «Real estate in Germany». У 253 страниц нет описания для Google, у 30 одинаковый заголовок. На английской главной и странице блога нет главного заголовка, у 116 страниц их несколько.</dd>
+        <dt>Решение</dt><dd>Схема заголовков для каждого языка, описания для объектов и услуг, один понятный главный заголовок на страницу.</dd>
+        <dt>Польза</dt><dd>Больше кликов из выдачи, потому что запись показывает, что предлагает страница.</dd>
+        <dt>Для разработчика</dt><dd class="tech">Суффикс <code>- DEM GROUP - Real estate in Germany</code> из строки WPML / SEO-плагина; нет H1 на <code>/en/</code>, <code>/blog/</code>, <code>/anfrageformular/</code>; 172 title &gt; 60 символов.</dd></dl>
+      </article>
+    </div>
+  </section>
+
+  <section class="block">
+    <h2>C · Скорость загрузки</h2>
+    <p class="intro">Замер Lighthouse — та же программа, что стоит за Google PageSpeed Insights (оценка 0–100, от 90 хорошо). Однократный замер 10.11.2026.</p>
+    <div class="table-wrap"><table><thead><tr><th>Страница</th><th class="num">Телефон</th><th class="num">Компьютер</th><th class="num">Главное изображение (телефон)</th><th class="num">Объём данных</th></tr></thead><tbody>
+      <tr><td><a href="https://www.dem-gruppe.de/" target="_blank" rel="noopener">Главная</a></td><td class="num"><b>9</b></td><td class="num">35</td><td class="num">21,1 с</td><td class="num">23 МБ</td></tr>
+      <tr><td><a href="https://www.dem-gruppe.de/immobilien/berlin-exklusive-2-zimmer-wohnung-moebliert-bezugsfrei-amp-ohne-bestehendes-mietverhaeltnis/" target="_blank" rel="noopener">Экспозе (Берлин, 2 комнаты)</a></td><td class="num"><b>16</b></td><td class="num">30</td><td class="num">21,6 с</td><td class="num">4,2 МБ</td></tr>
+      <tr><td><a href="https://www.dem-gruppe.de/agent/evgeny-katsman/" target="_blank" rel="noopener">Страница маклера</a></td><td class="num"><b>10</b></td><td class="num">48</td><td class="num">6,5 с</td><td class="num">4,5 МБ</td></tr>
+    </tbody></table></div>
+    <div class="issues" style="margin-top:16px">
+      <article class="issue r"><div class="issue-head"><h3>12 · 21 МБ фотографий на главной</h3><span class="effort">0,5 дня</span></div>
+        <dl><dt>Проблема</dt><dd>Главная на телефоне загружает 21,5 МБ изображений — примерно как 10 музыкальных альбомов в MP3. Отдельные фото весят больше 1 МБ, среди них необработанные снимки из WhatsApp в большом разрешении.</dd>
+        <dt>Решение</dt><dd>Автоматически уменьшать изображения и переводить в современный формат, фото ниже первого экрана грузить только при прокрутке.</dd>
+        <dt>Польза</dt><dd>Главная на телефоне открывается за несколько секунд вместо примерно 20. Лучше оценка Google.</dd>
+        <dt>Для разработчика</dt><dd class="tech">Слайдер/сетка грузят <code>-1536x1152.jpg</code> для плиток ~400 px; WebP/AVIF + <code>srcset</code>/<code>sizes</code>, <code>loading="lazy"</code>. SF: 1 143 изображения &gt; 100 КБ.</dd></dl>
+      </article>
+      <article class="issue r"><div class="issue-head"><h3>13 · Страница «прыгает» при загрузке</h3><span class="effort">2–4 ч</span></div>
+        <dl><dt>Проблема</dt><dd>Пока страница грузится, содержимое несколько раз сдвигается. Посетители из-за этого промахиваются. У экспозе на компьютере значение в восемь раз хуже границы, которую Google считает «плохой».</dd>
+        <dt>Решение</dt><dd>Задать фиксированные размеры для изображений, слайдера и шапки.</dd>
+        <dt>Польза</dt><dd>Спокойная загрузка, меньше ошибочных нажатий, лучше показатели Google.</dd>
+        <dt>Для разработчика</dt><dd class="tech">CLS: главная 0,40 (моб.) / 0,96 (десктоп), экспозе 0,82 / 2,45. 2 413 <code>&lt;img&gt;</code> без <code>width</code>/<code>height</code>.</dd></dl>
+      </article>
+      <article class="issue a"><div class="issue-head"><h3>14 · Медленный сервер, много программного кода</h3><span class="effort">0,5–1 день</span></div>
+        <dl><dt>Проблема</dt><dd>Сервер думает 1,2–2,4 секунды, прежде чем вообще ответить. Затем грузятся 45 скриптов, включая слайдер, конструктор страниц и дополнительные модули, которые на многих страницах не нужны.</dd>
+        <dt>Решение</dt><dd>Настроить кэш страниц, отключить неиспользуемые модули, загружать скрипты отложенно.</dd>
+        <dt>Польза</dt><dd>Быстрее ответ на каждой странице, меньше нагрузка на сервер.</dd>
+        <dt>Для разработчика</dt><dd class="tech">TTFB 1,2–2,4 с (full-page cache не виден); Slider Revolution, Elementor, Redux, WPML; версия nginx в заголовке, нет security-заголовков (HSTS, X-Content-Type-Options, Referrer-Policy).</dd></dl>
+      </article>
+    </div>
+  </section>
+
+  <section class="block">
+    <h2>D · Контент, который приносит заявки</h2>
+    <div class="issues">
+      <article class="issue r"><div class="issue-head"><h3>15 · Нет страниц под «маклер Дюссельдорф», «продать» и «оценить»</h3><span class="effort">2–3 дня</span></div>
+        <dl><dt>Проблема</dt><dd>Собственники ищут маклера, «Immobilie verkaufen Düsseldorf» или оценку. Ни под один из этих запросов у DEM GROUP нет отдельной страницы. На странице команды <a href="https://www.dem-gruppe.de/immobilienmakler/" target="_blank" rel="noopener">«Immobilienmakler»</a> почти нет своего текста.</dd>
+        <dt>Решение</dt><dd>Три страницы услуг: маклер в Дюссельдорфе, продажа недвижимости, бесплатная оценка. На каждой — порядок работы, референсы, контактное лицо и форма заявки.</dd>
+        <dt>Польза</dt><dd>Шанс на запросы, которые приносят заказы на продажу. Вместе больше 2 800 запросов в месяц.</dd>
+        <dt>Для разработчика</dt><dd class="tech">Частотность DE (SE Ranking): immobilienmakler düsseldorf 1 900, makler düsseldorf 610, immobilienbewertung düsseldorf 170, immobilie verkaufen düsseldorf 110. Добавить разметку <code>RealEstateAgent</code> с адресом и часами работы.</dd></dl>
+      </article>
+      <article class="issue a"><div class="issue-head"><h3>16 · Блог с темами не по профилю</h3><span class="effort">0,5 дня + постоянно</span></div>
+        <dl><dt>Проблема</dt><dd>В блоге восемь статей. Среди них рождественская ярмарка в Херне, рейтинг больниц, пасхальные обычаи и пограничный контроль в Польше. Собственникам и инвесторам в Дюссельдорфе это не нужно, а Google хуже понимает, чем занимается DEM GROUP.</dd>
+        <dt>Решение</dt><dd>Статьи не по теме удалить или перенаправить. Вместо них несколько основательных материалов: многоквартирный дом как инвестиция в NRW, порядок продажи, сопутствующие расходы при покупке, арендная доходность по районам Дюссельдорфа.</dd>
+        <dt>Польза</dt><dd>Контент, который ищут инвесторы и который ИИ-ассистенты цитируют как источник.</dd>
+        <dt>Для разработчика</dt><dd class="tech">Своего текста в статье ~150–370 слов (всего 612–839 минус ~465 слов каркаса страницы). Рубрика «Immobilienmarkt» содержит статьи про Charité и рождественскую ярмарку.</dd></dl>
+      </article>
+      <article class="issue a"><div class="issue-head"><h3>17 · Около 100 страниц-списков без своего текста</h3><span class="effort">0,5 дня</span></div>
+        <dl><dt>Проблема</dt><dd>Страницы вроде «Золинген», «Крефельд», «Балкон», «Парковка» или «Онлайн-просмотр» показывают только список объектов без единого предложения своего текста. Google считает такие страницы «тонкими».</dd>
+        <dt>Решение</dt><dd>Важные города (Дюссельдорф, Дуйсбург, Кёльн) дополнить коротким абзацем о рынке, остальные закрыть от Google.</dd>
+        <dt>Польза</dt><dd>Меньше балласта, больше веса у страниц, которые приносят заявки.</dd>
+        <dt>Для разработчика</dt><dd class="tech">Таксономии <code>stadt</code> (24), <code>ausstattung</code> (27), <code>immobilien-bezeichnung</code> (21), <code>immobilienart</code> (19), <code>immobilien-status</code> (16), DE+EN, все индексируемые и в карте сайта.</dd></dl>
+      </article>
+      <article class="issue a"><div class="issue-head"><h3>18 · Почти нет рекомендаций с других сайтов</h3><span class="effort">постоянно</span></div>
+        <dl><dt>Проблема</dt><dd>Только 4 сайта ссылаются на DEM GROUP так, что Google засчитывает ссылку как рекомендацию. У Spormann таких больше 300, у KOCO больше 200.</dd>
+        <dt>Решение</dt><dd>Каталоги маклеров и отраслевые справочники, профиль компании в Google, партнёрства (нотариусы, финансирование, управляющие компании), пресс-релизы о сделках.</dd>
+        <dt>Польза</dt><dd>Больше доверия Google, основа для лучших позиций.</dd>
+        <dt>Для разработчика</dt><dd class="tech">SE Ranking Backlinks: 44 ссылающихся домена, из них 4 dofollow, 49 из 59 ссылок с анкором «dem-gruppe.de».</dd></dl>
+      </article>
+    </div>
+  </section>
+
+  <section class="block">
+    <h2>Где стоят конкуренты в Дюссельдорфе</h2>
+    <p class="intro">Независимые дюссельдорфские маклеры, без франшиз. Оценка посетителей из Google в месяц и другие показатели SE Ranking, ноябрь 2026.</p>
+    <div class="table-wrap"><table><thead><tr><th>Маклер</th><th>Профиль</th><th class="num">Посетителей / мес.</th><th class="num">Запросов в топ-10</th><th class="num">Рекомендующих сайтов</th></tr></thead><tbody>
+      <tr class="me"><td><a href="https://www.dem-gruppe.de/" target="_blank" rel="noopener"><strong>DEM GROUP</strong></a></td><td>Кё · покупка, продажа, инвестиции</td><td class="num">~5</td><td class="num">5</td><td class="num">4</td></tr>
+      <tr><td><a href="https://www.spormann-realestate.com/" target="_blank" rel="noopener">Spormann Real Estate</a></td><td>Кё · лидер в интернете</td><td class="num">1 223</td><td class="num">390</td><td class="num">323</td></tr>
+      <tr><td><a href="https://koco-immobilien.de/" target="_blank" rel="noopener">KOCO Immobilien</a></td><td>Дюссельдорф · продажа, оценка</td><td class="num">428</td><td class="num">297</td><td class="num">205</td></tr>
+      <tr><td><a href="https://www.immoprofi-fischer.de/" target="_blank" rel="noopener">Immoprofi Fischer</a></td><td>Кё · похожий масштаб</td><td class="num">69</td><td class="num">34</td><td class="num">15</td></tr>
+      <tr><td><a href="https://tobiasbartschimmobilien.de/" target="_blank" rel="noopener">Tobias Bartsch Immobilien</a></td><td>Дюссельдорф · новый сайт с 08/2026</td><td class="num">34</td><td class="num">22</td><td class="num">5</td></tr>
+    </tbody></table></div>
+    <p class="note">«Рекомендующие сайты» — другие домены со ссылкой, которую Google засчитывает как рекомендацию (dofollow). В выдаче также стоят франшизы и порталы (Engel &amp; Völkers, Von Poll, Dahler, McMakler, Homeday, ImmoScout24). Их цифры общегерманские, поэтому здесь сознательно не сравниваются.</p>
+    <div class="callout"><strong>Честное сравнение:</strong> ближе всего к DEM GROUP <strong>Immoprofi Fischer</strong> — тоже на Кёнигсаллее и похож по профилю. У Fischer с простым сайтом примерно в 14 раз больше посетителей. Tobias Bartsch показывает, как быстро это возможно: новый сайт с августа с нуля вышел на 34 посетителя в месяц. Spormann и KOCO — планка для запроса «маклер Дюссельдорф».</div>
+
+    <h3 style="margin:28px 0 10px">Запросы продавцов</h3>
+    <p class="intro">Здесь ищут собственники, которые хотят продать или оценить объект. Число = место в Google.</p>
+    <div class="table-wrap"><table><thead><tr><th>Запрос</th><th class="num">Запросов / мес.</th><th class="num">DEM GROUP</th><th class="num">Spormann</th><th class="num">KOCO</th><th class="num">Fischer</th></tr></thead><tbody>
+      <tr><td>immobilienmakler düsseldorf</td><td class="num">1 900</td><td class="num">–</td><td class="num"><b>1</b></td><td class="num"><b>1</b></td><td class="num">–</td></tr>
+      <tr><td>makler düsseldorf</td><td class="num">610</td><td class="num">–</td><td class="num"><b>1</b></td><td class="num"><b>1</b></td><td class="num">–</td></tr>
+      <tr><td>immobilienbewertung düsseldorf</td><td class="num">170</td><td class="num">–</td><td class="num">–</td><td class="num"><b>1</b></td><td class="num">–</td></tr>
+      <tr><td>immobilie verkaufen düsseldorf</td><td class="num">110</td><td class="num">–</td><td class="num">3</td><td class="num">7</td><td class="num">–</td></tr>
+      <tr><td>wohnung verkaufen düsseldorf</td><td class="num">40</td><td class="num">–</td><td class="num">6</td><td class="num">–</td><td class="num">–</td></tr>
+    </tbody></table></div>
+    <p class="note">«–» = нет в первой сотне. Два сайта могут делить первое место, если Google измерялся в разное время.</p>
+
+    <h3 style="margin:28px 0 10px">Инвестиционные запросы: свободное поле</h3>
+    <p class="intro">Запросы инвесторов. Здесь никто из дюссельдорфских маклеров не впереди, места заняты порталами. С многоквартирными домами и доходными объектами в NRW DEM GROUP как раз сюда подходит.</p>
+    <div class="table-wrap"><table><thead><tr><th>Запрос</th><th class="num">Запросов / мес.</th><th class="num">DEM GROUP</th><th class="num">Spormann</th><th class="num">KOCO</th></tr></thead><tbody>
+      <tr><td>immobilien als kapitalanlage</td><td class="num">1 300</td><td class="num">–</td><td class="num">–</td><td class="num">–</td></tr>
+      <tr><td>mehrfamilienhaus kaufen düsseldorf</td><td class="num">480</td><td class="num">–</td><td class="num">–</td><td class="num">–</td></tr>
+      <tr><td>mehrfamilienhaus kaufen nrw</td><td class="num">260</td><td class="num">–</td><td class="num">–</td><td class="num">–</td></tr>
+      <tr><td>gewerbeimmobilien düsseldorf</td><td class="num">210</td><td class="num">–</td><td class="num">–</td><td class="num">–</td></tr>
+      <tr><td>anlageimmobilien kaufen</td><td class="num">140</td><td class="num">–</td><td class="num">–</td><td class="num">–</td></tr>
+    </tbody></table></div>
+    <div class="callout"><strong>Что это значит:</strong> по запросам продавцов DEM GROUP сначала нужны собственные страницы (пункт 15), потом время. По инвестиционным запросам местные маклеры так же слабы, как DEM GROUP сегодня. С хорошей страницей «Mehrfamilienhaus kaufen in NRW» и подходящими материалами DEM GROUP может занять это поле первым.</div>
+  </section>
+
+  <section class="block">
+    <h2>Посетители из Google: два года в сравнении</h2>
+    <p class="intro">Оценка посетителей в месяц, ноябрь 2024 — ноябрь 2026 (SE Ranking). Наведите мышь на график, чтобы увидеть значения по месяцам.</p>
+    <div class="trend" data-lang="ru"></div>
+    <details class="trend-table"><summary>Значения таблицей</summary><div class="table-wrap" data-table="ru"></div></details>
+    <div class="callout"><strong>Что это значит:</strong> DEM GROUP уже два года держится около нуля. Небольшие всплески в 2026 году дают почти только статьи не по профилю и названия других маклеров, а не покупатели или собственники из Дюссельдорфа. Spormann за то же время увеличил число посетителей в восемь раз.</div>
+  </section>
+
+  <section class="block">
+    <h2>Кто появляется в ответах ИИ</h2>
+    <p class="intro">Как часто ChatGPT, Gemini, Perplexity и ИИ-ответы Google ссылаются на сайт как на источник. SE Ranking, ноябрь 2026.</p>
+    <div class="table-wrap"><table><thead><tr><th>Маклер</th><th class="num">ИИ-ответы Google</th><th class="num">ChatGPT</th><th class="num">Gemini / Perplexity</th></tr></thead><tbody>
+      <tr class="me"><td><strong>DEM GROUP</strong></td><td class="num">0</td><td class="num">0</td><td class="num">0</td></tr>
+      <tr><td>KOCO Immobilien</td><td class="num">18</td><td class="num">1</td><td class="num">0</td></tr>
+      <tr><td>Tobias Bartsch</td><td class="num">3</td><td class="num">0</td><td class="num">0</td></tr>
+      <tr><td>Immoprofi Fischer</td><td class="num">2</td><td class="num">0</td><td class="num">0</td></tr>
+      <tr><td>Spormann</td><td class="num">0</td><td class="num">0</td><td class="num">0</td></tr>
+    </tbody></table></div>
+    <div class="callout"><strong>Что это значит:</strong> кто спрашивает ИИ о маклере или доходном объекте в Дюссельдорфе, сегодня DEM GROUP не услышит. Но поле ещё открыто: даже на Spormann ссылок нет. ИИ-ассистенты цитируют прежде всего основательные материалы с чёткими фактами и сайты с аккуратными данными о компании. Пункты 11, 15 и 16 закладывают для этого основу.</div>
+  </section>
+
+  <section class="block">
+    <h2>План работ</h2>
+    <div class="timeline">
+      <div class="phase"><div class="when">Неделя 1<small>Право и срочное</small></div>
+        <ul><li>Пункты 1–6: согласие, политика конфиденциальности, шрифты, импрессум, остатки демо</li><li>Пункты 7, 8 и 10: остановить бесконечные страницы, управляющий файл, битая ссылка</li></ul></div>
+      <div class="phase"><div class="when">Неделя 2<small>Скорость</small></div>
+        <ul><li>Пункты 9, 12–14: перенаправления, изображения, «прыжки» страницы, кэш</li><li>Пункт 11: заголовки</li><li>Контрольный замер, отчёт «до / после»</li></ul></div>
+      <div class="phase"><div class="when">Месяц 2–3<small>Рост</small></div>
+        <ul><li>Пункт 15: страницы «маклер Дюссельдорф», «продать недвижимость», «оценка»</li><li>Инвестиционная страница «Mehrfamilienhaus kaufen in NRW» и первые материалы (пункт 16)</li><li>Пункты 17 и 18: навести порядок в страницах-списках, каталоги и профиль компании в Google</li><li>Ежемесячный отчёт: посетители, заявки, позиции</li></ul></div>
+    </div>
+  </section>
+
+  <section class="block">
+    <div class="cols">
+      <div class="box"><h3>Что нужно для старта</h3>
+        <ul><li>Google Search Console (доступ на чтение)</li><li>Доступ к WordPress, в идеале с тестовой копией</li><li>Доступ к Google Tag Manager и Complianz</li><li>Контакт хостинга</li></ul></div>
+      <div class="box"><h3>Что вы получаете</h3>
+        <ul><li>Разработка и SEO из одних рук</li><li>Измеримые заявки вместо догадок</li><li>Чёткие приоритеты, без редизайна ради редизайна</li><li>Ежемесячный отчёт понятным языком, по желанию на русском</li></ul></div>
+    </div>
+  </section>
+
+  <section class="block contact">
+    <h2>Давайте обсудим</h2>
+    <p class="intro">С удовольствием разберу все пункты с вами в коротком разговоре, без обязательств.</p>
+    <div class="contact-card">
+      <div><b>Serhii Panchenko</b><span>веб-разработка и SEO</span></div>
+      <ul><li><a href="mailto:serhii@panchenko.work">serhii@panchenko.work</a></li><li><a href="https://panchenko.work/" rel="noopener">panchenko.work</a></li><li><a href="https://www.linkedin.com/in/panchenko-serhii/" rel="noopener">LinkedIn</a></li></ul>
+    </div>
+  </section>
+
+  <section class="block">
+    <h2>Основа и ограничения</h2>
+    <p class="intro">Полный обход сайта (Screaming Frog, 10.11.2026), перепроверка находок на живом сайте, тест согласия в чистом браузере без сохранённого выбора, замер скорости в Lighthouse 13 и база SE Ranking (ноябрь 2026). Все цифры по посетителям и позициям — оценки внешних баз и не заменяют данные Google Search Console или Analytics. Замечания по защите данных и импрессуму — технические наблюдения, а не юридическая консультация.</p>
+  </section>
+
+  <footer>Serhii Panchenko · Digital-Check dem-gruppe.de · 10.11.2026</footer>
+</main>
+
+<script>
+(function(){
+  var views={de:document.getElementById('de'),ru:document.getElementById('ru')};
+  var btns=document.querySelectorAll('.lang button');
+  function show(lang){
+    if(!views[lang]) lang='de';
+    for(var k in views) views[k].hidden=(k!==lang);
+    btns.forEach(function(b){b.setAttribute('aria-pressed',String(b.dataset.lang===lang))});
+    document.documentElement.lang=lang;
+    try{localStorage.setItem('dem-report-lang',lang)}catch(e){}
+  }
+  btns.forEach(function(b){b.addEventListener('click',function(){show(b.dataset.lang);if(location.hash!=='#'+b.dataset.lang)history.replaceState(null,'','#'+b.dataset.lang)})});
+  var start=location.hash.slice(1);
+  if(!views[start]){try{start=localStorage.getItem('dem-report-lang')||'de'}catch(e){start='de'}}
+  show(start);
+})();
+</script>
+<script>
+(function(){
+  var D={"months": ["2024-11", "2024-12", "2025-01", "2025-02", "2025-03", "2025-04", "2025-05", "2025-06", "2025-07", "2025-08", "2025-09", "2025-10", "2025-11", "2025-12", "2026-01", "2026-02", "2026-03", "2026-04", "2026-05", "2026-06", "2026-07", "2026-08", "2026-09", "2026-10", "2026-11"], "series": [["DEM GROUP", [0, 0, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 10, 3, 1, 5, 0, 6, 28, 3, 27, 6, 5]], ["Spormann", [146, 167, 258, 242, 218, 191, 117, 116, 179, 256, 302, 670, 582, 643, 802, 705, 568, 1335, 1656, 1714, 1457, 1760, 1757, 1381, 1223]], ["KOCO", [636, 592, 537, 535, 560, 585, 575, 295, 207, 293, 350, 1010, 769, 774, 913, 938, 708, 765, 658, 733, 768, 724, 575, 450, 428]], ["Immoprofi Fischer", [58, 60, 87, 102, 95, 72, 46, 42, 84, 82, 91, 93, 91, 98, 126, 73, 88, 66, 151, 80, 93, 83, 88, 67, 69]], ["Tobias Bartsch", [0, 0, 0, 0, 0, 0, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 32, 57, 34, 34]]]};
+  var MON={de:['Jan','Feb','Mär','Apr','Mai','Jun','Jul','Aug','Sep','Okt','Nov','Dez'],ru:['янв','фев','мар','апр','май','июн','июл','авг','сен','окт','ноя','дек']};
+  var NS='http://www.w3.org/2000/svg';
+  function el(n,a){var e=document.createElementNS(NS,n);for(var k in a)e.setAttribute(k,a[k]);return e}
+  function lab(m,lang){var p=m.split('-');return MON[lang][+p[1]-1]+' '+p[0].slice(2)}
+  document.querySelectorAll('.trend').forEach(function(box){
+    var lang=box.dataset.lang,W=720,H=300,ml=44,mr=150,mt=10,mb=28,iw=W-ml-mr,ih=H-mt-mb,n=D.months.length,max=2000;
+    var x=function(i){return ml+i*iw/(n-1)},y=function(v){return mt+ih-v/max*ih};
+    var leg=document.createElement('div');leg.className='legend';
+    D.series.forEach(function(s,k){leg.insertAdjacentHTML('beforeend','<span><i style="background:var(--s'+(k+1)+')"></i>'+s[0]+'</span>')});
+    box.appendChild(leg);
+    var svg=el('svg',{viewBox:'0 0 '+W+' '+H,role:'img','aria-label':box.parentNode.querySelector('h2').textContent});
+    [0,500,1000,1500,2000].forEach(function(v){
+      svg.appendChild(el('line',{x1:ml,x2:W-mr,y1:y(v),y2:y(v),stroke:'var(--grid)','stroke-width':1}));
+      var t=el('text',{x:ml-8,y:y(v)+4,'text-anchor':'end','font-size':11,fill:'var(--muted)'});t.textContent=v.toLocaleString(lang);svg.appendChild(t)});
+    [0,6,12,18,24].forEach(function(i){var t=el('text',{x:x(i),y:H-8,'text-anchor':'middle','font-size':11,fill:'var(--muted)'});t.textContent=lab(D.months[i],lang);svg.appendChild(t)});
+    var ends=[];
+    D.series.forEach(function(s,k){
+      var d=s[1].map(function(v,i){return(i?'L':'M')+x(i).toFixed(1)+' '+y(v).toFixed(1)}).join(' ');
+      svg.appendChild(el('path',{d:d,fill:'none',stroke:'var(--s'+(k+1)+')','stroke-width':k?2:3,'stroke-linejoin':'round','stroke-linecap':'round'}));
+      ends.push({k:k,y:y(s[1][n-1]),name:s[0],v:s[1][n-1]})});
+    ends.sort(function(a,b){return a.y-b.y});
+    for(var i=1;i<ends.length;i++)if(ends[i].y-ends[i-1].y<15)ends[i].y=ends[i-1].y+15;
+    var over=ends.length?ends[ends.length-1].y-(mt+ih):0;
+    if(over>0)ends.forEach(function(e){e.y-=over});
+    ends.forEach(function(e){
+      svg.appendChild(el('circle',{cx:x(n-1),cy:y(D.series[e.k][1][n-1]),r:4,fill:'var(--s'+(e.k+1)+')',stroke:'var(--paper)','stroke-width':2}));
+      var t=el('text',{x:x(n-1)+10,y:e.y+4,'font-size':12,fill:'var(--ink)','font-weight':e.k?400:600});t.textContent=e.name+' '+e.v.toLocaleString(lang);svg.appendChild(t)});
+    var cross=el('line',{y1:mt,y2:mt+ih,stroke:'var(--muted)','stroke-width':1,'stroke-dasharray':'3 3',visibility:'hidden'});svg.appendChild(cross);
+    var dots=D.series.map(function(s,k){var c=el('circle',{r:4,fill:'var(--s'+(k+1)+')',stroke:'var(--paper)','stroke-width':2,visibility:'hidden'});svg.appendChild(c);return c});
+    var hit=el('rect',{x:ml,y:mt,width:iw,height:ih,fill:'transparent'});svg.appendChild(hit);
+    box.appendChild(svg);
+    var tip=document.createElement('div');tip.className='tip';box.appendChild(tip);
+    function move(ev){
+      var r=svg.getBoundingClientRect(),px=(ev.clientX-r.left)*W/r.width,i=Math.max(0,Math.min(n-1,Math.round((px-ml)/(iw/(n-1)))));
+      cross.setAttribute('x1',x(i));cross.setAttribute('x2',x(i));cross.setAttribute('visibility','visible');
+      dots.forEach(function(c,k){c.setAttribute('cx',x(i));c.setAttribute('cy',y(D.series[k][1][i]));c.setAttribute('visibility','visible')});
+      tip.innerHTML='<div style="color:var(--muted)">'+lab(D.months[i],lang)+'</div>'+D.series.map(function(s,k){return '<div><i style="display:inline-block;width:10px;height:3px;background:var(--s'+(k+1)+');margin-right:6px;vertical-align:middle"></i>'+s[0]+'<b>'+s[1][i].toLocaleString(lang)+'</b></div>'}).join('');
+      tip.style.display='block';
+      var bx=box.getBoundingClientRect(),left=ev.clientX-bx.left+14;
+      if(left+tip.offsetWidth>bx.width)left=ev.clientX-bx.left-tip.offsetWidth-14;
+      tip.style.left=Math.max(0,left)+'px';tip.style.top=(svg.offsetTop+10)+'px'}
+    function out(){cross.setAttribute('visibility','hidden');dots.forEach(function(c){c.setAttribute('visibility','hidden')});tip.style.display='none'}
+    hit.addEventListener('pointermove',move);hit.addEventListener('pointerdown',move);hit.addEventListener('pointerleave',out);
+    var tw=document.querySelector('[data-table="'+lang+'"]');
+    tw.innerHTML='<table><thead><tr><th>'+(lang==='de'?'Monat':'Месяц')+'</th>'+D.series.map(function(s){return '<th class="num">'+s[0]+'</th>'}).join('')+'</tr></thead><tbody>'+D.months.map(function(m,i){return '<tr><td>'+lab(m,lang)+'</td>'+D.series.map(function(s){return '<td class="num">'+s[1][i].toLocaleString(lang)+'</td>'}).join('')+'</tr>'}).join('')+'</tbody></table>';
+  });
+})();
+</script>
 </body>
 </html>

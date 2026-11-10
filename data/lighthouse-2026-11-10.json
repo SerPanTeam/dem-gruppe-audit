@@ -1,0 +1,80 @@
+{
+ "agent_desktop": {
+  "perf": 48,
+  "seo": 92,
+  "a11y": 75,
+  "bp": 100,
+  "fcp_s": 1.7,
+  "lcp_s": 2.4,
+  "tbt_ms": 98,
+  "cls": 0.989,
+  "si_s": 3.5,
+  "weight_kb": 4483,
+  "requests": 111
+ },
+ "agent_mobile": {
+  "perf": 10,
+  "seo": 92,
+  "a11y": 68,
+  "bp": 100,
+  "fcp_s": 4.6,
+  "lcp_s": 6.5,
+  "tbt_ms": 2398,
+  "cls": 0.488,
+  "si_s": 10.7,
+  "weight_kb": 4486,
+  "requests": 114
+ },
+ "home_desktop": {
+  "perf": 35,
+  "seo": 92,
+  "a11y": 77,
+  "bp": 73,
+  "fcp_s": 3.2,
+  "lcp_s": 3.4,
+  "tbt_ms": 125,
+  "cls": 0.963,
+  "si_s": 7.0,
+  "weight_kb": 16234,
+  "requests": 337
+ },
+ "home_mobile": {
+  "perf": 9,
+  "seo": 92,
+  "a11y": 70,
+  "bp": 73,
+  "fcp_s": 9.0,
+  "lcp_s": 21.1,
+  "tbt_ms": 1818,
+  "cls": 0.404,
+  "si_s": 32.0,
+  "weight_kb": 23171,
+  "requests": 339
+ },
+ "prop_desktop": {
+  "perf": 30,
+  "seo": 83,
+  "a11y": 69,
+  "bp": 100,
+  "fcp_s": 2.0,
+  "lcp_s": 4.7,
+  "tbt_ms": 209,
+  "cls": 2.445,
+  "si_s": 4.3,
+  "weight_kb": 4660,
+  "requests": 139
+ },
+ "prop_mobile": {
+  "perf": 16,
+  "seo": 83,
+  "a11y": 65,
+  "bp": 100,
+  "fcp_s": 5.0,
+  "lcp_s": 21.6,
+  "tbt_ms": 698,
+  "cls": 0.817,
+  "si_s": 9.3,
+  "weight_kb": 4177,
+  "requests": 134
+ }
+}

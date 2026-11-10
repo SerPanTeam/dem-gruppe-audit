@@ -1,0 +1,37 @@
+{
+ "url": "https://www.dem-gruppe.de/",
+ "page": {
+  "banner": "cmplz-cookiebanner banner-1 banner-a optin cmplz-bottom-right cmplz-categories-type-view-preferences cmplz-show display=grid",
+  "consentCmd": [],
+  "gtm": [
+   "GTM-5VMCM5P8",
+   "GT-WRGJZM8N"
+  ]
+ },
+ "thirdParty": {
+  "https://fonts.googleapis.com/css": 1,
+  "https://www.googletagmanager.com/gtag/js": 3,
+  "https://www.googletagmanager.com/gtm.js": 1,
+  "https://fonts.gstatic.com/s/roboto/v51/KFO7CnqEu92Fr1ME7kSn66aGLdTylUAMa3yUBA.woff2": 1,
+  "https://fonts.gstatic.com/s/roboto/v51/KFO7CnqEu92Fr1ME7kSn66aGLdTylUAMaxKUBGEe.woff2": 1,
+  "https://fonts.gstatic.com/s/roboto/v51/KFO7CnqEu92Fr1ME7kSn66aGLdTylUAMa3iUBGEe.woff2": 1,
+  "https://fonts.googleapis.com/css2": 1,
+  "https://cdn.trustindex.io/loader.js": 1,
+  "https://www.clarity.ms/tag/vnxwoqy4t1": 1,
+  "https://region1.google-analytics.com/g/collect": 1,
+  "blob:https://www.dem-gruppe.de/7571e5a0-5634-43ef-8e27-b600cec9dded": 1,
+  "https://scripts.clarity.ms/0.8.77/clarity.js": 1,
+  "https://h.clarity.ms/collect": 4,
+  "https://s.w.org/images/core/emoji/17.0.2/svg/1f3e2.svg": 1,
+  "https://s.w.org/images/core/emoji/17.0.2/svg/2728.svg": 1,
+  "https://s.w.org/images/core/emoji/17.0.2/svg/1f3e1.svg": 1,
+  "https://s.w.org/images/core/emoji/17.0.2/svg/1f511.svg": 1,
+  "https://s.w.org/images/core/emoji/17.0.2/svg/1f4b6.svg": 1,
+  "https://s.w.org/images/core/emoji/17.0.2/svg/1f3e0.svg": 1
+ },
+ "cookies": [
+  ".dem-gruppe.de _ga_T1F3QMW9L9",
+  ".dem-gruppe.de _ga",
+  "www.dem-gruppe.de wp-wpml_current_language"
+ ]
+}

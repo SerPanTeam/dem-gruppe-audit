@@ -1,0 +1,555 @@
+{
+ "source": "SE Ranking Data API, database DE, retrieved 2026-11-10",
+ "domains": {
+  "dem-gruppe.de": {
+   "kw": 97,
+   "traffic": 5,
+   "top10": 5,
+   "refdomains": 44,
+   "dofollow_ref": 4,
+   "dr": 4,
+   "backlinks": 59,
+   "kw_dus": 6,
+   "kw_dus_top10": 0,
+   "niche": {}
+  },
+  "koco-immobilien.de": {
+   "kw": 1544,
+   "traffic": 428,
+   "top10": 297,
+   "refdomains": 342,
+   "dofollow_ref": 205,
+   "dr": 59,
+   "backlinks": 1286,
+   "kw_dus": 451,
+   "kw_dus_top10": 99,
+   "niche": {
+    "immobilienmakler düsseldorf": 1,
+    "makler düsseldorf": 1,
+    "immobilienbewertung düsseldorf": 1,
+    "immobilie verkaufen düsseldorf": 7
+   }
+  },
+  "spormann-realestate.com": {
+   "kw": 1555,
+   "traffic": 1223,
+   "top10": 390,
+   "refdomains": 380,
+   "dofollow_ref": 323,
+   "dr": 29,
+   "backlinks": 797,
+   "kw_dus": 659,
+   "kw_dus_top10": 220,
+   "niche": {
+    "immobilien düsseldorf": 8,
+    "immobilienmakler düsseldorf": 1,
+    "makler düsseldorf": 1,
+    "immobilie verkaufen düsseldorf": 3,
+    "wohnung verkaufen düsseldorf": 6
+   }
+  },
+  "tobiasbartschimmobilien.de": {
+   "kw": 68,
+   "traffic": 34,
+   "top10": 22,
+   "refdomains": 7,
+   "dofollow_ref": 5,
+   "dr": 40,
+   "backlinks": 28,
+   "kw_dus": 28,
+   "kw_dus_top10": 8,
+   "niche": {}
+  },
+  "immoprofi-fischer.de": {
+   "kw": 244,
+   "traffic": 69,
+   "top10": 34,
+   "refdomains": 50,
+   "dofollow_ref": 15,
+   "dr": 3,
+   "backlinks": 75,
+   "kw_dus": 66,
+   "kw_dus_top10": 8,
+   "niche": {}
+  },
+  "duesselraum-immobilien.de": {
+   "kw": 5,
+   "traffic": 0,
+   "top10": 0,
+   "refdomains": 50,
+   "dofollow_ref": 23,
+   "dr": 3,
+   "backlinks": 55,
+   "kw_dus": 0,
+   "kw_dus_top10": 0,
+   "niche": {}
+  }
+ },
+ "keywords_volume_and_positions": {
+  "columns": [
+   "volume",
+   "dem-gruppe.de",
+   "spormann-realestate.com",
+   "koco-immobilien.de",
+   "immoprofi-fischer.de",
+   "tobiasbartschimmobilien.de",
+   "duesselraum-immobilien.de"
+  ],
+  "rows": {
+   "wohnung kaufen düsseldorf": [
+    3600,
+    null,
+    4,
+    null,
+    null,
+    null,
+    null
+   ],
+   "haus kaufen düsseldorf": [
+    3100,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null
+   ],
+   "immobilien düsseldorf": [
+    2400,
+    null,
+    8,
+    null,
+    null,
+    null,
+    null
+   ],
+   "immobilienmakler düsseldorf": [
+    1900,
+    null,
+    1,
+    1,
+    null,
+    null,
+    null
+   ],
+   "immobilien als kapitalanlage": [
+    1300,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null
+   ],
+   "makler düsseldorf": [
+    610,
+    null,
+    1,
+    1,
+    null,
+    null,
+    null
+   ],
+   "mehrfamilienhaus kaufen düsseldorf": [
+    480,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null
+   ],
+   "mehrfamilienhaus düsseldorf kaufen": [
+    480,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null
+   ],
+   "mehrfamilienhaus kaufen nrw": [
+    260,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null
+   ],
+   "gewerbeimmobilien düsseldorf": [
+    210,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null
+   ],
+   "immobilienbewertung düsseldorf": [
+    170,
+    null,
+    null,
+    1,
+    null,
+    null,
+    null
+   ],
+   "anlageimmobilien kaufen": [
+    140,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null
+   ],
+   "immobilie verkaufen düsseldorf": [
+    110,
+    null,
+    3,
+    7,
+    null,
+    null,
+    null
+   ],
+   "zinshaus kaufen": [
+    70,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null
+   ],
+   "haus verkaufen düsseldorf": [
+    70,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null
+   ],
+   "wohnung verkaufen düsseldorf": [
+    40,
+    null,
+    6,
+    null,
+    null,
+    null,
+    null
+   ],
+   "immobilienmakler oberkassel": [
+    40,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null
+   ],
+   "immobilienmakler duesseldorf": [
+    20,
+    null,
+    5,
+    19,
+    56,
+    null,
+    null
+   ],
+   "kapitalanlage düsseldorf": [
+    20,
+    null,
+    18,
+    null,
+    null,
+    null,
+    null
+   ]
+  }
+ },
+ "traffic_trend": {
+  "months": [
+   "2024-11",
+   "2024-12",
+   "2025-01",
+   "2025-02",
+   "2025-03",
+   "2025-04",
+   "2025-05",
+   "2025-06",
+   "2025-07",
+   "2025-08",
+   "2025-09",
+   "2025-10",
+   "2025-11",
+   "2025-12",
+   "2026-01",
+   "2026-02",
+   "2026-03",
+   "2026-04",
+   "2026-05",
+   "2026-06",
+   "2026-07",
+   "2026-08",
+   "2026-09",
+   "2026-10",
+   "2026-11"
+  ],
+  "series": [
+   [
+    "DEM GROUP",
+    [
+     0,
+     0,
+     1,
+     1,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     10,
+     3,
+     1,
+     5,
+     0,
+     6,
+     28,
+     3,
+     27,
+     6,
+     5
+    ]
+   ],
+   [
+    "Spormann",
+    [
+     146,
+     167,
+     258,
+     242,
+     218,
+     191,
+     117,
+     116,
+     179,
+     256,
+     302,
+     670,
+     582,
+     643,
+     802,
+     705,
+     568,
+     1335,
+     1656,
+     1714,
+     1457,
+     1760,
+     1757,
+     1381,
+     1223
+    ]
+   ],
+   [
+    "KOCO",
+    [
+     636,
+     592,
+     537,
+     535,
+     560,
+     585,
+     575,
+     295,
+     207,
+     293,
+     350,
+     1010,
+     769,
+     774,
+     913,
+     938,
+     708,
+     765,
+     658,
+     733,
+     768,
+     724,
+     575,
+     450,
+     428
+    ]
+   ],
+   [
+    "Immoprofi Fischer",
+    [
+     58,
+     60,
+     87,
+     102,
+     95,
+     72,
+     46,
+     42,
+     84,
+     82,
+     91,
+     93,
+     91,
+     98,
+     126,
+     73,
+     88,
+     66,
+     151,
+     80,
+     93,
+     83,
+     88,
+     67,
+     69
+    ]
+   ],
+   [
+    "Tobias Bartsch",
+    [
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     1,
+     1,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     32,
+     57,
+     34,
+     34
+    ]
+   ]
+  ]
+ },
+ "ai_search": {
+  "aic_immoprofi-fischer.de_ai-overview.json": {
+   "brand": "Immoprofi Fischer",
+   "link_presence": 2,
+   "brand_presence": null
+  },
+  "aic_immoprofi-fischer.de_chatgpt.json": {
+   "brand": "Immoprofi Fischer",
+   "link_presence": 0,
+   "brand_presence": 0
+  },
+  "aic_immoprofi-fischer.de_gemini.json": {
+   "brand": "Immoprofi Fischer",
+   "link_presence": null,
+   "brand_presence": null
+  },
+  "aic_immoprofi-fischer.de_perplexity.json": {
+   "brand": "Immoprofi Fischer",
+   "link_presence": null,
+   "brand_presence": null
+  },
+  "aic_koco-immobilien.de_ai-overview.json": {
+   "brand": "KOCO Immobilien",
+   "link_presence": 18,
+   "brand_presence": 4
+  },
+  "aic_koco-immobilien.de_chatgpt.json": {
+   "brand": "KOCO Immobilien",
+   "link_presence": 1,
+   "brand_presence": 6
+  },
+  "aic_koco-immobilien.de_gemini.json": {
+   "brand": "KOCO Immobilien",
+   "link_presence": null,
+   "brand_presence": 2
+  },
+  "aic_koco-immobilien.de_perplexity.json": {
+   "brand": "KOCO Immobilien",
+   "link_presence": null,
+   "brand_presence": null
+  },
+  "aic_spormann-realestate.com_ai-overview.json": {
+   "brand": "Spormann Real Estate",
+   "link_presence": null,
+   "brand_presence": 1
+  },
+  "aic_spormann-realestate.com_chatgpt.json": {
+   "brand": "Spormann Real Estate",
+   "link_presence": 0,
+   "brand_presence": 0
+  },
+  "aic_spormann-realestate.com_gemini.json": {
+   "brand": "Spormann Real Estate",
+   "link_presence": null,
+   "brand_presence": null
+  },
+  "aic_spormann-realestate.com_perplexity.json": {
+   "brand": "Spormann Real Estate",
+   "link_presence": null,
+   "brand_presence": null
+  },
+  "aic_tobiasbartschimmobilien.de_ai-overview.json": {
+   "brand": "tobiasbartschimmobilien.de",
+   "link_presence": 3,
+   "brand_presence": null
+  },
+  "aic_tobiasbartschimmobilien.de_chatgpt.json": {
+   "brand": "tobiasbartschimmobilien.de",
+   "link_presence": null,
+   "brand_presence": null
+  },
+  "aic_tobiasbartschimmobilien.de_gemini.json": {
+   "brand": "tobiasbartschimmobilien.de",
+   "link_presence": null,
+   "brand_presence": null
+  },
+  "aic_tobiasbartschimmobilien.de_perplexity.json": {
+   "brand": "tobiasbartschimmobilien.de",
+   "link_presence": null,
+   "brand_presence": null
+  },
+  "ai_ai-search_overview_ai-overview.json": {
+   "brand": "DEM",
+   "link_presence": null,
+   "brand_presence": 427
+  },
+  "ai_ai-search_overview_chatgpt.json": {
+   "brand": "DEM",
+   "link_presence": null,
+   "brand_presence": 25
+  },
+  "ai_ai-search_overview_gemini.json": {
+   "brand": "DEM",
+   "link_presence": null,
+   "brand_presence": 16
+  },
+  "ai_ai-search_overview_perplexity.json": {
+   "brand": "DEM",
+   "link_presence": null,
+   "brand_presence": 4
+  }
+ }
+}

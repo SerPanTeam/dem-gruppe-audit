@@ -39,5 +39,5 @@ Zahlen: 1.280 HTML-URLs (717 DE / 563 EN), davon nur **285 indexierbar**, 995 ni
 8. **PageSpeed (SF-PSI):** Performance-Median **44** (n=1.170); render-blocking, unused CSS/JS, Bild-Auslieferung auf fast allen Seiten.
 9. **Security-Header:** HSTS, CSP, X-Frame-Options, X-Content-Type-Options, Referrer-Policy fehlen auf allen URLs.
 10. **EN-Exposés ohne viewport-Meta** (5 URLs, u. a. /en/property/berlin-exclusive-…, /en/property/attractive-hotel-…).
-11. **Autoren-Archive** mit E-Mail im Slug: `/author/roman-kitikgmail-com/` (noindex, aber öffentlich) → Datenschutz/Spam.
+11. **Autoren-Archive** mit E-Mail im Slug: `/author/r…-gmail-com/` (private Gmail-Adresse im Slug) (noindex, aber öffentlich) → Datenschutz/Spam.
 12. EN-Exposé `/en/property/restaurant-in-47137-duisburg/` leitet auf DE-Version um.
