@@ -21,3 +21,23 @@ Firma: DEM GROUP Management GmbH, Immobilienmakler Düsseldorf (Kauf/Verkauf, au
 - Screaming-Frog-Vollcrawl → raw/
 - PSI mobil/desktop, SE Ranking (Sichtbarkeit, Keywords, Wettbewerber Düsseldorf), KI-Sichtbarkeit
 - Rechtliches: Impressum, Datenschutz, Consent vor GTM
+
+---
+
+# Screaming-Frog-Vollcrawl 10.11.2026 (Export `2026.11.10.08.29.17/`, lokal, gitignored)
+
+Zahlen: 1.280 HTML-URLs (717 DE / 563 EN), davon nur **285 indexierbar**, 995 nicht indexierbar (971 per Canonical auf andere URL). Zählungen je Export-Datei: `data/screamingfrog-2026-11-10-counts.txt`.
+
+## Hauptbefunde
+1. **Endlose Paginierung auf Makler-/Agentur-Seiten (Crawler-Falle).** `/agent/evgeny-katsman/page/N/`, `/agent/severyna-moroz/…`, `/agentur/dem-group-management-gmbh/…` + EN-Pendants: ~970 URLs bis page/179. Live geprüft: page/2, /10, /100, /178, **/500** → alle 200, identischer Inhalt (3 Objekte), Canonical auf Seite 1. Crawl-Budget-Verschwendung + Serverlast → am Ende des Crawls **11× 502** (u. a. agent/…/page/169, /177, /179; /ausstattung/balkon/page/2–3, /en/ausstattung/garden|kitchen|balcony) + 3 Timeouts.
+2. **robots.txt 404** (s. o.) — bestätigt.
+3. **Redirect-Kette** https://dem-gruppe.de → http://www → https://www (Crawl bestätigt).
+4. **404:** `/?p=21092` und `/en/?p=21092` intern verlinkt.
+5. **H1:** 6 ohne H1 (u. a. `/en/`, `/blog/`, `/anfrageformular/`), 116 mit mehreren H1, 145 doppelte H1.
+6. **Titles/Descriptions:** 30 doppelte Titles, 172 Titles > 60 Zeichen, 253 ohne Meta-Description.
+7. **Bilder:** 2.393 ohne Alt-Text, 1.143 > 100 KB, 2.413 ohne width/height (CLS).
+8. **PageSpeed (SF-PSI):** Performance-Median **44** (n=1.170); render-blocking, unused CSS/JS, Bild-Auslieferung auf fast allen Seiten.
+9. **Security-Header:** HSTS, CSP, X-Frame-Options, X-Content-Type-Options, Referrer-Policy fehlen auf allen URLs.
+10. **EN-Exposés ohne viewport-Meta** (5 URLs, u. a. /en/property/berlin-exclusive-…, /en/property/attractive-hotel-…).
+11. **Autoren-Archive** mit E-Mail im Slug: `/author/roman-kitikgmail-com/` (noindex, aber öffentlich) → Datenschutz/Spam.
+12. EN-Exposé `/en/property/restaurant-in-47137-duisburg/` leitet auf DE-Version um.
