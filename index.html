@@ -149,7 +149,7 @@ a>code{text-decoration:underline;text-underline-offset:2px}
   <section class="block verdict">
     <h2>Das Wichtigste in Kürze</h2>
     <ul style="margin-top:18px">
-      <li><span class="n">1</span><div><h3>Google verliert sich in leeren Seiten.</h3><p>Die Makler-Seiten lassen sich endlos weiterblättern: bis Seite 500, 9999 und weiter. Google verschwendet dort seine Zeit, der Server gerät unter Last, und die wichtigen Seiten kommen zu kurz.</p></div></li>
+      <li><span class="n">1</span><div><h3>Google verliert sich in leeren Seiten.</h3><p>Die Seiten der Makler und der Agentur lassen sich endlos weiterblättern: bis Seite 500, 9999 und weiter, auch wenn die Objekte längst zu Ende sind. Google verschwendet dort seine Zeit, der Server gerät unter Last, und die wichtigen Seiten kommen zu kurz.</p></div></li>
       <li><span class="n">2</span><div><h3>Auf dem Handy ist die Website sehr langsam.</h3><p>Die Startseite lädt 21,5 MB Fotos und dazu viel Programmcode. Bei einer langsameren Mobilverbindung ist der Inhalt erst nach etwa 20 Sekunden zu sehen. Viele Interessenten sind bis dahin weg.</p></div></li>
       <li><span class="n">3</span><div><h3>Für die wichtigsten Suchen fehlt eine passende Seite.</h3><p>Eigentümer suchen nach „Immobilienmakler Düsseldorf“, „Immobilie verkaufen Düsseldorf“ oder „Immobilienbewertung Düsseldorf“. DEM GROUP hat zu keinem dieser Themen eine eigene Seite. Vorn stehen dort die Düsseldorfer Makler Spormann und KOCO.</p></div></li>
     </ul>
@@ -229,14 +229,15 @@ a>code{text-decoration:underline;text-underline-offset:2px}
   <section class="block">
     <h2>B · Damit Google die Website richtig versteht</h2>
     <div class="issues">
-      <article class="issue r"><div class="issue-head"><h3>7 · Die Makler-Seiten lassen sich endlos weiterblättern</h3><span class="effort">1–2 Std.</span></div>
-        <dl><dt>Problem</dt><dd>An jede Makler- und Agenturseite lässt sich eine beliebige Seitenzahl anhängen, zum Beispiel <a href="https://www.dem-gruppe.de/agent/evgeny-katsman/page/500/" target="_blank" rel="noopener">Seite 500</a>. Ab Seite 2 sind diese Seiten leer, der Server liefert sie aber trotzdem als normale Seiten aus. Jede davon enthält einen für Besucher unsichtbaren Link „Mehr laden“ auf die nächste Zahl, und Suchmaschinen folgen ihm endlos. Deshalb sind von den 1.280 Seiten, die ein Suchroboter findet, rund 970 solche Leerseiten. Während meiner Prüfung hat der Server außerdem 11-mal mit einem Fehler geantwortet (Fehler 502).</dd>
+      <article class="issue r"><div class="issue-head"><h3>7 · Makler- und Agenturseiten lassen sich endlos weiterblättern</h3><span class="effort">1–2 Std.</span></div>
+        <dl><dt>Problem</dt><dd>An jede Makler- und Agenturseite lässt sich eine beliebige Seitenzahl anhängen. Ein Beispiel ist die Seite der Agentur selbst: Dort enden die Objekte auf Seite 4. Trotzdem liefert der Server auch Seite 5, 100 oder <a href="https://www.dem-gruppe.de/agentur/dem-group-management-gmbh/page/500/" target="_blank" rel="noopener">Seite 500</a> als normale Seite aus, nur eben leer. Jede dieser Leerseiten enthält einen für Besucher unsichtbaren Link „Mehr laden“ auf die nächste Zahl, und Suchmaschinen folgen ihm endlos. Deshalb sind von den 1.280 Seiten, die ein Suchroboter findet, rund 970 solche Leerseiten. Während meiner Prüfung hat der Server außerdem 11-mal mit einem Fehler geantwortet (Fehler 502).</dd>
         <dt>Lösung</dt><dd>Für nicht vorhandene Seitenzahlen „Seite nicht gefunden“ ausgeben. Den Link nur zeigen, wenn es wirklich weitere Objekte gibt.</dd>
         <dt>Bringt</dt><dd>Google kümmert sich um Objekte und Leistungsseiten statt um Leerseiten. Der Server wird entlastet und fällt seltener aus.</dd>
         <dt>Technik</dt><dd class="tech"><code>/agent/*/page/N/</code>, <code>/agentur/*/page/N/</code> + EN liefern für jedes N 200 („Keine Auflistung gefunden“) mit <code>a.houzez-infinite-load[data-page=N+1]</code> im versteckten Tab <code>#tab-properties</code>, Canonical auf Seite 1. Beim Crawl 11× 502 Bad Gateway. Template prüft <code>max_num_pages</code> nicht → 404 erzwingen, Load-more-Link nur bei <code>data-total &gt; 0</code>.</dd></dl>
-        <div class="table-wrap log"><table><thead><tr><th>Aufgerufene Adresse (10.11.2026)</th><th>Antwort des Servers</th><th>Inhalt</th><th>Link führt weiter zu</th></tr></thead><tbody>
-          <tr><td><code>/agent/evgeny-katsman/</code></td><td>normale Seite (200)</td><td>Makler-Seite mit Objekten</td><td>Seite 2</td></tr>
-          <tr><td><code>…/page/2/</code></td><td>normale Seite (200)</td><td>„Keine Auflistung gefunden“</td><td>Seite 3</td></tr>
+        <div class="table-wrap log"><table><thead><tr><th>Aufgerufene Adresse (Stand 10.11.2026)</th><th>Antwort des Servers</th><th>Inhalt</th><th>Link führt weiter zu</th></tr></thead><tbody>
+          <tr><td><code>/agentur/dem-group-management-gmbh/</code></td><td>normale Seite (200)</td><td>Agenturseite mit Objekten</td><td>Seite 2</td></tr>
+          <tr><td><code>…/page/4/</code></td><td>normale Seite (200)</td><td>letzte Seite mit Objekten</td><td>Seite 5</td></tr>
+          <tr><td><code>…/page/5/</code></td><td>normale Seite (200)</td><td>„Keine Auflistung gefunden“</td><td>Seite 6</td></tr>
           <tr><td><code>…/page/100/</code></td><td>normale Seite (200)</td><td>„Keine Auflistung gefunden“</td><td>Seite 101</td></tr>
           <tr><td><code>…/page/500/</code></td><td>normale Seite (200)</td><td>„Keine Auflistung gefunden“</td><td>Seite 501</td></tr>
           <tr><td><code>…/page/9999/</code></td><td>normale Seite (200)</td><td>„Keine Auflistung gefunden“</td><td>Seite 10000</td></tr>
@@ -453,7 +454,7 @@ a>code{text-decoration:underline;text-underline-offset:2px}
   <section class="block verdict">
     <h2>Главное коротко</h2>
     <ul style="margin-top:18px">
-      <li><span class="n">1</span><div><h3>Google теряется в пустых страницах.</h3><p>Страницы маклеров можно листать бесконечно: до страницы 500, 9999 и дальше. Google тратит на них время, сервер перегружается, а важным страницам внимания не хватает.</p></div></li>
+      <li><span class="n">1</span><div><h3>Google теряется в пустых страницах.</h3><p>Страницы маклеров и агентства можно листать бесконечно: до страницы 500, 9999 и дальше, хотя объекты давно закончились. Google тратит на них время, сервер перегружается, а важным страницам внимания не хватает.</p></div></li>
       <li><span class="n">2</span><div><h3>На телефоне сайт очень медленный.</h3><p>Главная загружает 21,5 МБ фотографий и много программного кода. При медленной мобильной связи содержимое видно только примерно через 20 секунд. Многие уходят раньше.</p></div></li>
       <li><span class="n">3</span><div><h3>Для главных запросов нет подходящей страницы.</h3><p>Собственники ищут «Immobilienmakler Düsseldorf», «Immobilie verkaufen Düsseldorf» или «Immobilienbewertung Düsseldorf». Ни под одну из этих тем у DEM GROUP нет отдельной страницы. Впереди там дюссельдорфские маклеры Spormann и KOCO.</p></div></li>
     </ul>
@@ -533,14 +534,15 @@ a>code{text-decoration:underline;text-underline-offset:2px}
   <section class="block">
     <h2>B · Чтобы Google правильно понимал сайт</h2>
     <div class="issues">
-      <article class="issue r"><div class="issue-head"><h3>7 · Страницы маклеров листаются бесконечно</h3><span class="effort">1–2 ч</span></div>
-        <dl><dt>Проблема</dt><dd>К адресу любой страницы маклера или агентства можно дописать любой номер страницы, например <a href="https://www.dem-gruppe.de/agent/evgeny-katsman/page/500/" target="_blank" rel="noopener">страницу 500</a>. Начиная со второй, эти страницы пустые, но сервер всё равно отдаёт их как обычные. На каждой есть невидимая для посетителей ссылка «Mehr laden» («загрузить ещё») на следующий номер, и поисковики идут по ней без конца. Поэтому из 1 280 страниц, которые находит поисковый робот, около 970 — такие пустышки. Кроме того, во время моей проверки сервер 11 раз ответил ошибкой (ошибка 502).</dd>
+      <article class="issue r"><div class="issue-head"><h3>7 · Страницы маклеров и агентства листаются бесконечно</h3><span class="effort">1–2 ч</span></div>
+        <dl><dt>Проблема</dt><dd>К адресу любой страницы маклера или агентства можно дописать любой номер страницы. Пример — страница самого агентства: объекты на ней заканчиваются на 4-й странице. Но сервер отдаёт и 5-ю, и 100-ю, и <a href="https://www.dem-gruppe.de/agentur/dem-group-management-gmbh/page/500/" target="_blank" rel="noopener">500-ю</a> как обычные страницы, только пустые. На каждой такой пустышке есть невидимая для посетителей ссылка «Mehr laden» («загрузить ещё») на следующий номер, и поисковики идут по ней без конца. Поэтому из 1 280 страниц, которые находит поисковый робот, около 970 — такие пустышки. Кроме того, во время моей проверки сервер 11 раз ответил ошибкой (ошибка 502).</dd>
         <dt>Решение</dt><dd>На несуществующие номера отвечать «страница не найдена». Показывать ссылку, только если дальше действительно есть объекты.</dd>
         <dt>Польза</dt><dd>Google занимается объектами и страницами услуг, а не пустышками. Сервер разгружается и реже падает.</dd>
         <dt>Для разработчика</dt><dd class="tech"><code>/agent/*/page/N/</code>, <code>/agentur/*/page/N/</code> + EN отдают 200 для любого N («Keine Auflistung gefunden») с <code>a.houzez-infinite-load[data-page=N+1]</code> в скрытой вкладке <code>#tab-properties</code>, canonical на первую. При обходе 11× 502 Bad Gateway. Шаблон не проверяет <code>max_num_pages</code> → принудительный 404, ссылку load-more выводить только при <code>data-total &gt; 0</code>.</dd></dl>
-        <div class="table-wrap log"><table><thead><tr><th>Открытый адрес (10.11.2026)</th><th>Ответ сервера</th><th>Содержимое</th><th>Ссылка ведёт на</th></tr></thead><tbody>
-          <tr><td><code>/agent/evgeny-katsman/</code></td><td>обычная страница (200)</td><td>Страница маклера с объектами</td><td>страницу 2</td></tr>
-          <tr><td><code>…/page/2/</code></td><td>обычная страница (200)</td><td>«Keine Auflistung gefunden» («объектов нет»)</td><td>страницу 3</td></tr>
+        <div class="table-wrap log"><table><thead><tr><th>Открытый адрес (на 10.11.2026)</th><th>Ответ сервера</th><th>Содержимое</th><th>Ссылка ведёт на</th></tr></thead><tbody>
+          <tr><td><code>/agentur/dem-group-management-gmbh/</code></td><td>обычная страница (200)</td><td>Страница агентства с объектами</td><td>страницу 2</td></tr>
+          <tr><td><code>…/page/4/</code></td><td>обычная страница (200)</td><td>Последняя страница с объектами</td><td>страницу 5</td></tr>
+          <tr><td><code>…/page/5/</code></td><td>обычная страница (200)</td><td>«Keine Auflistung gefunden» («объектов нет»)</td><td>страницу 6</td></tr>
           <tr><td><code>…/page/100/</code></td><td>обычная страница (200)</td><td>«Keine Auflistung gefunden»</td><td>страницу 101</td></tr>
           <tr><td><code>…/page/500/</code></td><td>обычная страница (200)</td><td>«Keine Auflistung gefunden»</td><td>страницу 501</td></tr>
           <tr><td><code>…/page/9999/</code></td><td>обычная страница (200)</td><td>«Keine Auflistung gefunden»</td><td>страницу 10000</td></tr>
